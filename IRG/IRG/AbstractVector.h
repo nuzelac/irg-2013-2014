@@ -16,6 +16,8 @@ public:
     AbstractVector();
     virtual IVector* add(IVector*);
     virtual IVector* nAdd(IVector*);
+    virtual IVector* sub(IVector*);
+    virtual IVector* nSub(IVector*);
 };
 
 #endif /* defined(__IRG__AbstractVector__) */

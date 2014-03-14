@@ -13,8 +13,8 @@ IVector* AbstractVector::add(IVector *other) {
         throw "Incompatible operands";
     
     for(int i = 0; i < this->getDimension(); ++i) {
-        double sum = this->get(i) + other->get(i);
-        this->set(i, sum);
+        double add = this->get(i) + other->get(i);
+        this->set(i, add);
     }
     
     return this;
@@ -26,8 +26,33 @@ IVector* AbstractVector::nAdd(IVector *other) {
     
     IVector *newV = this->newInstance(this->getDimension());
     for(int i = 0; i < this->getDimension(); ++i) {
-        double sum = this->get(i) + other->get(i);
-        newV->set(i, sum);
+        double add = this->get(i) + other->get(i);
+        newV->set(i, add);
+    }
+    
+    return newV;
+}
+
+IVector* AbstractVector::sub(IVector *other) {
+    if(this->getDimension() != other->getDimension())
+        throw "Incompatible operands";
+    
+    for(int i = 0; i < this->getDimension(); ++i) {
+        double sub = this->get(i) - other->get(i);
+        this->set(i, sub);
+    }
+    
+    return this;
+}
+
+IVector* AbstractVector::nSub(IVector *other) {
+    if(this->getDimension() != other->getDimension())
+        throw "Incompatible operands";
+    
+    IVector *newV = this->newInstance(this->getDimension());
+    for(int i = 0; i < this->getDimension(); ++i) {
+        double sub = this->get(i) - other->get(i);
+        newV->set(i, sub);
     }
     
     return newV;
