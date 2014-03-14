@@ -8,11 +8,27 @@
 
 #include "AbstractVector.h"
 
-IVector* AbstractVector::add(IVector *v) {
-    for(int i = 0; i < v->getDimension(); ++i) {
-        double sum = this->get(i) + v->get(i);
+IVector* AbstractVector::add(IVector *other) {
+    if(this->getDimension() != other->getDimension())
+        throw "Incompatible operands";
+    
+    for(int i = 0; i < this->getDimension(); ++i) {
+        double sum = this->get(i) + other->get(i);
         this->set(i, sum);
     }
     
     return this;
+}
+
+IVector* AbstractVector::nAdd(IVector *other) {
+    if(this->getDimension() != other->getDimension())
+        throw "Incompatible operands";
+    
+    IVector *newV = this->newInstance(this->getDimension());
+    for(int i = 0; i < this->getDimension(); ++i) {
+        double sum = this->get(i) + other->get(i);
+        newV->set(i, sum);
+    }
+    
+    return newV;
 }

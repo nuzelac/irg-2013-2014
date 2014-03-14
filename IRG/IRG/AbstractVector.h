@@ -15,6 +15,7 @@ class AbstractVector : IVector {
 public:
     AbstractVector();
     virtual IVector* add(IVector*);
+    virtual IVector* nAdd(IVector*);
 };
 
 #endif /* defined(__IRG__AbstractVector__) */
