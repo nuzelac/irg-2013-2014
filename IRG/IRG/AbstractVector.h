@@ -22,6 +22,8 @@ public:
     virtual IVector* scalarMultiply(double);
     virtual IVector* nScalarMultiply(double);
     virtual double norm();
+    virtual IVector* normalize();
+    virtual IVector* nNormalize();
 };
 
 #endif /* defined(__IRG__AbstractVector__) */

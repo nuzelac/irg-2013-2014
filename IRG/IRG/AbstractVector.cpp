@@ -87,3 +87,25 @@ double AbstractVector::norm() {
     return sqrt(sum);
 }
 
+IVector* AbstractVector::normalize() {
+    double norm = this->norm();
+    
+    for(int i = 0; i < this->getDimension(); ++i) {
+        double val = this->get(i) / norm;
+        this->set(i, val);
+    }
+    
+    return this;
+}
+
+IVector* AbstractVector::nNormalize() {
+    double norm = this->norm();
+    IVector* newVector = this->newInstance(this->getDimension());
+    
+    for(int i = 0; i < this->getDimension(); ++i) {
+        double val = this->get(i) / norm;
+        newVector->set(i, val);
+    }
+    
+    return newVector;
+}
