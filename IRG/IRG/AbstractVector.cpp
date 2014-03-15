@@ -24,13 +24,13 @@ IVector* AbstractVector::nAdd(IVector *other) {
     if(this->getDimension() != other->getDimension())
         throw "Incompatible operands";
     
-    IVector *newV = this->newInstance(this->getDimension());
+    IVector *newVector = this->newInstance(this->getDimension());
     for(int i = 0; i < this->getDimension(); ++i) {
         double add = this->get(i) + other->get(i);
-        newV->set(i, add);
+        newVector->set(i, add);
     }
     
-    return newV;
+    return newVector;
 }
 
 IVector* AbstractVector::sub(IVector *other) {
@@ -49,11 +49,31 @@ IVector* AbstractVector::nSub(IVector *other) {
     if(this->getDimension() != other->getDimension())
         throw "Incompatible operands";
     
-    IVector *newV = this->newInstance(this->getDimension());
+    IVector *newVector = this->newInstance(this->getDimension());
     for(int i = 0; i < this->getDimension(); ++i) {
         double sub = this->get(i) - other->get(i);
-        newV->set(i, sub);
+        newVector->set(i, sub);
     }
     
-    return newV;
+    return newVector;
 }
+
+IVector* AbstractVector::scalarMultiply(double val) {
+    for(int i = 0; i < this->getDimension(); ++i) {
+        double newVal = this->get(i) * val;
+        this->set(i, newVal);
+    }
+    
+    return this;
+}
+
+IVector* AbstractVector::nScalarMultiply(double val) {
+    IVector *newVector = this->newInstance(this->getDimension());
+    for(int i = 0; i < this->getDimension(); ++i) {
+        double newVal = this->get(i) * val;
+        newVector->set(i, newVal);
+    }
+    
+    return newVector;
+}
+

@@ -18,6 +18,8 @@ public:
     virtual IVector* nAdd(IVector*);
     virtual IVector* sub(IVector*);
     virtual IVector* nSub(IVector*);
+    virtual IVector* scalarMultiply(double);
+    virtual IVector* nScalarMultiply(double);
 };
 
 #endif /* defined(__IRG__AbstractVector__) */
