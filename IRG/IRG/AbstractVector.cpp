@@ -77,3 +77,13 @@ IVector* AbstractVector::nScalarMultiply(double val) {
     return newVector;
 }
 
+double AbstractVector::norm() {
+    double sum = 0;
+    for(int i = 0; i < this->getDimension(); ++i) {
+        double val = this->get(i);
+        sum += val * val;
+    }
+    
+    return sqrt(sum);
+}
+

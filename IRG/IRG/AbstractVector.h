@@ -10,6 +10,7 @@
 #define __IRG__AbstractVector__
 
 #include "IVector.h"
+#include <cmath>
 
 class AbstractVector : IVector {
 public:
@@ -20,6 +21,7 @@ public:
     virtual IVector* nSub(IVector*);
     virtual IVector* scalarMultiply(double);
     virtual IVector* nScalarMultiply(double);
+    virtual double norm();
 };
 
 #endif /* defined(__IRG__AbstractVector__) */
