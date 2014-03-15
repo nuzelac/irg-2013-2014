@@ -109,3 +109,22 @@ IVector* AbstractVector::nNormalize() {
     
     return newVector;
 }
+
+double AbstractVector::cosine(IVector *other) {
+    double cos = this->scalarProduct(other) / (this->norm() * other->norm());
+    
+    return cos;
+}
+
+double AbstractVector::scalarProduct(IVector *other) {
+    if(this->getDimension() != other->getDimension())
+        throw "Incompatible operands";
+
+    double product = 0;
+    for(int i = 0; i < this->getDimension(); ++i) {
+        product += this->get(i) * other->get(i);
+    }
+    
+    return product;
+}
+
