@@ -14,6 +14,8 @@
 		3F55AD3318D3856D006B46FF /* IVector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3F55AD3118D3856D006B46FF /* IVector.cpp */; };
 		3F55AD3618D38895006B46FF /* AbstractVector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3F55AD3418D38895006B46FF /* AbstractVector.cpp */; };
 		3F55AD3918D38AD5006B46FF /* IMatrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3F55AD3718D38AD5006B46FF /* IMatrix.cpp */; };
+		3F90C54218D646C900983B1D /* MatrixTransposeView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3F90C54018D646C900983B1D /* MatrixTransposeView.cpp */; };
+		3F90C54518D646DC00983B1D /* MatrixSubMatrixView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3F90C54318D646DC00983B1D /* MatrixSubMatrixView.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -43,6 +45,10 @@
 		3F55AD3518D38895006B46FF /* AbstractVector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AbstractVector.h; path = IRG/AbstractVector.h; sourceTree = "<group>"; };
 		3F55AD3718D38AD5006B46FF /* IMatrix.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = IMatrix.cpp; path = IRG/IMatrix.cpp; sourceTree = "<group>"; };
 		3F55AD3818D38AD5006B46FF /* IMatrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IMatrix.h; path = IRG/IMatrix.h; sourceTree = "<group>"; };
+		3F90C54018D646C900983B1D /* MatrixTransposeView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MatrixTransposeView.cpp; sourceTree = "<group>"; };
+		3F90C54118D646C900983B1D /* MatrixTransposeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatrixTransposeView.h; sourceTree = "<group>"; };
+		3F90C54318D646DC00983B1D /* MatrixSubMatrixView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MatrixSubMatrixView.cpp; sourceTree = "<group>"; };
+		3F90C54418D646DC00983B1D /* MatrixSubMatrixView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatrixSubMatrixView.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +75,10 @@
 				3F34A3AC18D5FCD100FE9A96 /* Vector.h */,
 				3F34A3B218D6289200FE9A96 /* AbstractMatrix.cpp */,
 				3F34A3B318D6289200FE9A96 /* AbstractMatrix.h */,
+				3F90C54018D646C900983B1D /* MatrixTransposeView.cpp */,
+				3F90C54118D646C900983B1D /* MatrixTransposeView.h */,
+				3F90C54318D646DC00983B1D /* MatrixSubMatrixView.cpp */,
+				3F90C54418D646DC00983B1D /* MatrixSubMatrixView.h */,
 			);
 			name = lib;
 			sourceTree = "<group>";
@@ -150,12 +160,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F90C54218D646C900983B1D /* MatrixTransposeView.cpp in Sources */,
 				3F55AD3318D3856D006B46FF /* IVector.cpp in Sources */,
 				3F55AD3618D38895006B46FF /* AbstractVector.cpp in Sources */,
 				3F34A3B418D6289200FE9A96 /* AbstractMatrix.cpp in Sources */,
 				3F34A3AD18D5FCD100FE9A96 /* Vector.cpp in Sources */,
 				3F55AD3918D38AD5006B46FF /* IMatrix.cpp in Sources */,
 				3F55AD2918D38471006B46FF /* main.cpp in Sources */,
+				3F90C54518D646DC00983B1D /* MatrixSubMatrixView.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
