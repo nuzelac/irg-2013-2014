@@ -30,6 +30,10 @@ Vector::Vector(bool readOnly, bool useArr, double *arr) {
     }
 }
 
+Vector::~Vector() {
+    delete[] this->elements;
+}
+
 double Vector::get(int i) {
     if(i < this->getDimension() || i >= this->getDimension())
         throw "Index out of range";

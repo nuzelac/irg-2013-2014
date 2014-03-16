@@ -20,6 +20,7 @@ private:
 public:
     Vector(double*);
     Vector(bool, bool, double*);
+    ~Vector();
     virtual double get(int);
     virtual IVector* set(int, double);
     virtual int getDimension();
