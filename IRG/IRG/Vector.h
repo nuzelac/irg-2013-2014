@@ -20,8 +20,8 @@ private:
     int dimension;
     bool readOnly;
 public:
-    Vector(double*);
-    Vector(bool, bool, double*);
+    Vector(double*, int);
+    Vector(bool, bool, double*, int);
     ~Vector();
     virtual double get(int);
     virtual IVector* set(int, double);

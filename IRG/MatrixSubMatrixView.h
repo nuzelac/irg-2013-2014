@@ -9,6 +9,27 @@
 #ifndef __IRG__MatrixSubMatrixView__
 #define __IRG__MatrixSubMatrixView__
 
-#include <iostream>
+#include "AbstractMatrix.h"
+
+class MatrixSubMatrixView : public AbstractMatrix {
+private:
+    int* rowIndexes;
+    int rowIndexesSize;
+    int* colIndexes;
+    int colIndexesSize;
+    IMatrix* mat;
+    MatrixSubMatrixView(IMatrix*, int, int, int*, int*);
+    
+public:
+    MatrixSubMatrixView(IMatrix*, int, int);
+    ~MatrixSubMatrixView();
+    virtual int getRowsCount();
+    virtual int getColsCount();
+    virtual double get(int, int);
+    virtual IMatrix* set(int, int, double);
+    virtual IMatrix* copy();
+    virtual IMatrix* newInstance(int, int);
+    virtual IMatrix* subMatrix(int, int, bool);
+};
 
 #endif /* defined(__IRG__MatrixSubMatrixView__) */
