@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3F34A3AD18D5FCD100FE9A96 /* Vector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3F34A3AB18D5FCD100FE9A96 /* Vector.cpp */; };
+		3F34A3B418D6289200FE9A96 /* AbstractMatrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3F34A3B218D6289200FE9A96 /* AbstractMatrix.cpp */; };
 		3F55AD2918D38471006B46FF /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3F55AD2818D38471006B46FF /* main.cpp */; };
 		3F55AD2B18D38471006B46FF /* IRG.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3F55AD2A18D38471006B46FF /* IRG.1 */; };
 		3F55AD3318D3856D006B46FF /* IVector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3F55AD3118D3856D006B46FF /* IVector.cpp */; };
@@ -31,6 +32,8 @@
 /* Begin PBXFileReference section */
 		3F34A3AB18D5FCD100FE9A96 /* Vector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Vector.cpp; path = IRG/Vector.cpp; sourceTree = "<group>"; };
 		3F34A3AC18D5FCD100FE9A96 /* Vector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Vector.h; path = IRG/Vector.h; sourceTree = "<group>"; };
+		3F34A3B218D6289200FE9A96 /* AbstractMatrix.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AbstractMatrix.cpp; sourceTree = "<group>"; };
+		3F34A3B318D6289200FE9A96 /* AbstractMatrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractMatrix.h; sourceTree = "<group>"; };
 		3F55AD2518D38471006B46FF /* IRG */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = IRG; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F55AD2818D38471006B46FF /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		3F55AD2A18D38471006B46FF /* IRG.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = IRG.1; sourceTree = "<group>"; };
@@ -64,6 +67,8 @@
 				3F55AD3818D38AD5006B46FF /* IMatrix.h */,
 				3F34A3AB18D5FCD100FE9A96 /* Vector.cpp */,
 				3F34A3AC18D5FCD100FE9A96 /* Vector.h */,
+				3F34A3B218D6289200FE9A96 /* AbstractMatrix.cpp */,
+				3F34A3B318D6289200FE9A96 /* AbstractMatrix.h */,
 			);
 			name = lib;
 			sourceTree = "<group>";
@@ -147,6 +152,7 @@
 			files = (
 				3F55AD3318D3856D006B46FF /* IVector.cpp in Sources */,
 				3F55AD3618D38895006B46FF /* AbstractVector.cpp in Sources */,
+				3F34A3B418D6289200FE9A96 /* AbstractMatrix.cpp in Sources */,
 				3F34A3AD18D5FCD100FE9A96 /* Vector.cpp in Sources */,
 				3F55AD3918D38AD5006B46FF /* IMatrix.cpp in Sources */,
 				3F55AD2918D38471006B46FF /* main.cpp in Sources */,
