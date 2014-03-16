@@ -13,9 +13,8 @@
 #include <cmath>
 #include <algorithm>
 
-class AbstractVector : IVector {
+class AbstractVector : public IVector {
 public:
-    AbstractVector();
     virtual IVector* add(IVector*);
     virtual IVector* nAdd(IVector*);
     virtual IVector* sub(IVector*);

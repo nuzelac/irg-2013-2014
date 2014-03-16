@@ -13,7 +13,7 @@
 
 class IVector {
 public:
-    virtual int get(int) =0;
+    virtual double get(int) =0;
     virtual IVector* set(int, double) =0;
     virtual int getDimension() =0;
     virtual IVector* copy() =0;
