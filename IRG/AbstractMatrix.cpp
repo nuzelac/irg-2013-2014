@@ -82,3 +82,24 @@ IMatrix* AbstractMatrix::nSub(IMatrix *other) {
     return mat;
 }
 
+IMatrix* AbstractMatrix::nMultiply(IMatrix *other) {
+    if(this->getColsCount() != other->getRowsCount())
+        throw "Incompatible operands";
+    
+    IMatrix *mat = this->newInstance(this->getRowsCount(), this->getColsCount());
+    
+    for(int i = 0; i < this->getRowsCount(); ++i) {
+        for(int j = 0; j < other->getColsCount(); ++j) {
+            double val = 0;
+            for(int k = 0; k < this->getColsCount(); ++k) {
+                val += this->get(i, k) * other->get(k, j);
+                mat->set(i, j, val);
+            }
+        }
+    }
+    
+    return mat;
+}
+
+
+
