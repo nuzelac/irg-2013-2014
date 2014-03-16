@@ -20,11 +20,11 @@ Vector::Vector(double *arr) {
 Vector::Vector(bool readOnly, bool useArr, double *arr) {
     this->readOnly = readOnly;
     this->dimension = sizeof(arr) / sizeof(double);
-    this->elements = new double[this->dimension];
 
     if(useArr) {
         this->elements = arr;
     } else {
+        this->elements = new double[this->dimension];
         for(int i = 0; i < this->dimension; ++i) {
             this->elements[i] = arr[i];
         }        
@@ -46,7 +46,7 @@ IVector* Vector::set(int i, double val) {
     if(i < this->getDimension() || i >= this->getDimension())
         throw "Index out of range";
     if(this->readOnly)
-        throw "Vector is immutable";        
+        throw "Vector is immutable";
     
     this->elements[i] = val;
 
