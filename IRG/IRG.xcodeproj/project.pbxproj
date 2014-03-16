@@ -29,17 +29,17 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		3F34A3AB18D5FCD100FE9A96 /* Vector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Vector.cpp; sourceTree = "<group>"; };
-		3F34A3AC18D5FCD100FE9A96 /* Vector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vector.h; sourceTree = "<group>"; };
+		3F34A3AB18D5FCD100FE9A96 /* Vector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Vector.cpp; path = IRG/Vector.cpp; sourceTree = "<group>"; };
+		3F34A3AC18D5FCD100FE9A96 /* Vector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Vector.h; path = IRG/Vector.h; sourceTree = "<group>"; };
 		3F55AD2518D38471006B46FF /* IRG */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = IRG; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F55AD2818D38471006B46FF /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		3F55AD2A18D38471006B46FF /* IRG.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = IRG.1; sourceTree = "<group>"; };
-		3F55AD3118D3856D006B46FF /* IVector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IVector.cpp; sourceTree = "<group>"; };
-		3F55AD3218D3856D006B46FF /* IVector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IVector.h; sourceTree = "<group>"; };
-		3F55AD3418D38895006B46FF /* AbstractVector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AbstractVector.cpp; sourceTree = "<group>"; };
-		3F55AD3518D38895006B46FF /* AbstractVector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractVector.h; sourceTree = "<group>"; };
-		3F55AD3718D38AD5006B46FF /* IMatrix.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IMatrix.cpp; sourceTree = "<group>"; };
-		3F55AD3818D38AD5006B46FF /* IMatrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMatrix.h; sourceTree = "<group>"; };
+		3F55AD3118D3856D006B46FF /* IVector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = IVector.cpp; path = IRG/IVector.cpp; sourceTree = "<group>"; };
+		3F55AD3218D3856D006B46FF /* IVector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IVector.h; path = IRG/IVector.h; sourceTree = "<group>"; };
+		3F55AD3418D38895006B46FF /* AbstractVector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AbstractVector.cpp; path = IRG/AbstractVector.cpp; sourceTree = "<group>"; };
+		3F55AD3518D38895006B46FF /* AbstractVector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AbstractVector.h; path = IRG/AbstractVector.h; sourceTree = "<group>"; };
+		3F55AD3718D38AD5006B46FF /* IMatrix.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = IMatrix.cpp; path = IRG/IMatrix.cpp; sourceTree = "<group>"; };
+		3F55AD3818D38AD5006B46FF /* IMatrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IMatrix.h; path = IRG/IMatrix.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,9 +53,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3F34A3B018D61C0800FE9A96 /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				3F55AD3118D3856D006B46FF /* IVector.cpp */,
+				3F55AD3218D3856D006B46FF /* IVector.h */,
+				3F55AD3418D38895006B46FF /* AbstractVector.cpp */,
+				3F55AD3518D38895006B46FF /* AbstractVector.h */,
+				3F55AD3718D38AD5006B46FF /* IMatrix.cpp */,
+				3F55AD3818D38AD5006B46FF /* IMatrix.h */,
+				3F34A3AB18D5FCD100FE9A96 /* Vector.cpp */,
+				3F34A3AC18D5FCD100FE9A96 /* Vector.h */,
+			);
+			name = lib;
+			sourceTree = "<group>";
+		};
 		3F55AD1C18D38471006B46FF = {
 			isa = PBXGroup;
 			children = (
+				3F34A3B018D61C0800FE9A96 /* lib */,
 				3F55AD2718D38471006B46FF /* IRG */,
 				3F55AD2618D38471006B46FF /* Products */,
 			);
@@ -74,14 +90,6 @@
 			children = (
 				3F55AD2818D38471006B46FF /* main.cpp */,
 				3F55AD2A18D38471006B46FF /* IRG.1 */,
-				3F55AD3118D3856D006B46FF /* IVector.cpp */,
-				3F55AD3218D3856D006B46FF /* IVector.h */,
-				3F55AD3418D38895006B46FF /* AbstractVector.cpp */,
-				3F55AD3518D38895006B46FF /* AbstractVector.h */,
-				3F55AD3718D38AD5006B46FF /* IMatrix.cpp */,
-				3F55AD3818D38AD5006B46FF /* IMatrix.h */,
-				3F34A3AB18D5FCD100FE9A96 /* Vector.cpp */,
-				3F34A3AC18D5FCD100FE9A96 /* Vector.h */,
 			);
 			path = IRG;
 			sourceTree = "<group>";

@@ -36,14 +36,14 @@ Vector::~Vector() {
 }
 
 double Vector::get(int i) {
-    if(i < this->getDimension() || i >= this->getDimension())
+    if(i < 0 || i >= this->getDimension())
         throw "Index out of range";
     
     return this->elements[i];
 }
 
 IVector* Vector::set(int i, double val) {
-    if(i < this->getDimension() || i >= this->getDimension())
+    if(i < 0 || i >= this->getDimension())
         throw "Index out of range";
     if(this->readOnly)
         throw "Vector is immutable";
@@ -72,16 +72,16 @@ Vector* Vector::parseSimple(std::string str) {
     std::string buf;
     std::stringstream ss(str); // Insert the string into a stream
     
-    std::vector<std::string> tokens; // Create vector to hold our words
+    std::vector<double> tokens; // Create vector to hold our words
     
     while (ss >> buf)
-        tokens.push_back(buf);
+        tokens.push_back(atof(buf.c_str()));
+
+    double *arr = new double[tokens.size()];
     
     for(int i = 0; i < tokens.size(); ++i) {
-        printf("%s\n", tokens[i].c_str());
+        arr[i] = tokens[i];
     }
-    
-//    
-//    return new Vector(elements);
-    return nullptr;
+
+    return new Vector(false, true, arr);
 }
