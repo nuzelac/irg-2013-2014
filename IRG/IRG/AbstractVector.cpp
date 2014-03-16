@@ -100,7 +100,7 @@ IVector* AbstractVector::normalize() {
 
 IVector* AbstractVector::nNormalize() {
     double norm = this->norm();
-    IVector* newVector = this->newInstance(this->getDimension());
+    IVector *newVector = this->newInstance(this->getDimension());
     
     for(int i = 0; i < this->getDimension(); ++i) {
         double val = this->get(i) / norm;
@@ -128,3 +128,20 @@ double AbstractVector::scalarProduct(IVector *other) {
     return product;
 }
 
+IVector* AbstractVector::nVectorProduct(IVector *other) {
+    if(this->getDimension() != other->getDimension())
+        throw "Incompatible operands";
+
+    if(this->getDimension() != 3)
+        throw "Vector product is defined for 3-dimensional vectors";
+    
+    IVector *newVector = this->newInstance(3);
+    double valI = this->get(2) * other->get(3) - this->get(3) * other->get(2);
+    double valJ = this->get(3) * other->get(1) - this->get(1) * other->get(3);
+    double valK = this->get(1) * other->get(2) - this->get(2) * other->get(1);
+    newVector->set(1, valI);
+    newVector->set(2, valJ);
+    newVector->set(3, valK);
+    
+    return newVector;
+}

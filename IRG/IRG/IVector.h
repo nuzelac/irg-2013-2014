@@ -30,7 +30,7 @@ public:
     virtual IVector* nNormalize() =0;
     virtual double cosine(IVector*) =0;
     virtual double scalarProduct(IVector*) =0;
-    virtual double nVectorProduct(IVector*) =0;
+    virtual IVector* nVectorProduct(IVector*) =0;
     virtual IVector* nFromHomogeneus() =0;
 //    virtual IMatrix* toRowMatrix(bool) =0;
 //    virtual IMatrix* toColumnMatrix(bool) =0;

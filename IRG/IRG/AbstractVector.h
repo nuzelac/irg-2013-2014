@@ -26,6 +26,7 @@ public:
     virtual IVector* nNormalize();
     virtual double cosine(IVector*);
     virtual double scalarProduct(IVector*);
+    virtual IVector* nVectorProduct(IVector*);
 };
 
 #endif /* defined(__IRG__AbstractVector__) */
