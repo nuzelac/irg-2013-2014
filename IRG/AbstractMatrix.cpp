@@ -93,8 +93,8 @@ IMatrix* AbstractMatrix::nMultiply(IMatrix *other) {
             double val = 0;
             for(int k = 0; k < this->getColsCount(); ++k) {
                 val += this->get(i, k) * other->get(k, j);
-                mat->set(i, j, val);
             }
+            mat->set(i, j, val);            
         }
     }
     
