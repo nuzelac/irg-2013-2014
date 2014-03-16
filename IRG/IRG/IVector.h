@@ -32,8 +32,8 @@ public:
     virtual double scalarProduct(IVector*) =0;
     virtual IVector* nVectorProduct(IVector*) =0;
     virtual IVector* nFromHomogeneus() =0;
-    virtual IMatrix* toRowMatrix(bool) =0;
-    virtual IMatrix* toColumnMatrix(bool) =0;
+//    virtual IMatrix* toRowMatrix(bool) =0;
+//    virtual IMatrix* toColumnMatrix(bool) =0;
     virtual double* toArray() =0;
 };
 

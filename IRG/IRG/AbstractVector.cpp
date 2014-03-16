@@ -159,3 +159,27 @@ IVector* AbstractVector::nFromHomogeneus() {
     
     return newVector;
 }
+
+double* AbstractVector::toArray() {
+    double *arr = new double[this->getDimension()];
+    
+    for(int i = 0; i < this->getDimension(); ++i) {
+        arr[i] = this->get(i);
+    }
+    
+    return arr;
+}
+
+IVector* AbstractVector::copyPart(int dim) {
+    IVector *newVector = this->newInstance(dim);
+    
+    for(int i = 0; i < dim; ++i) {
+        newVector->set(i, 0);
+    }
+    
+    for(int i = 0; i < std::min(dim, this->getDimension()); ++i) {
+        newVector->set(i, this->get(i));
+    }
+    
+    return newVector;
+}

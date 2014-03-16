@@ -11,6 +11,7 @@
 
 #include "IVector.h"
 #include <cmath>
+#include <algorithm>
 
 class AbstractVector : IVector {
 public:
@@ -28,6 +29,8 @@ public:
     virtual double scalarProduct(IVector*);
     virtual IVector* nVectorProduct(IVector*);
     virtual IVector* nFromHomogeneus();
+    virtual double* toArray();
+    virtual IVector* copyPart(int);
 };
 
 #endif /* defined(__IRG__AbstractVector__) */
