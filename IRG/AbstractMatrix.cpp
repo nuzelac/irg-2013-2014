@@ -9,8 +9,6 @@
 #include "AbstractMatrix.h"
 
 //virtual IMatrix* nTranspose(bool);
-//virtual IMatrix* nMultiply(IMatrix *);
-//virtual double determinant();
 //virtual IMatrix* subMatrix(int, int, bool);
 //virtual IMatrix* nInvert();
 //virtual double** toArray();
@@ -94,12 +92,30 @@ IMatrix* AbstractMatrix::nMultiply(IMatrix *other) {
             for(int k = 0; k < this->getColsCount(); ++k) {
                 val += this->get(i, k) * other->get(k, j);
             }
-            mat->set(i, j, val);            
+            mat->set(i, j, val);
         }
     }
     
     return mat;
 }
 
+double AbstractMatrix::determinant() {
+    if(this->getColsCount() != this->getRowsCount())
+        throw "Cannot calculate determinant for non-square matrix";
+    
+    double det = 0;
+    if(this->getRowsCount() == 2) {
+        det = this->get(0, 0) * this->get(1, 1)
+              - this->get(0, 1) * this->get(1, 0);
+    } else {
+        int sign = 1;
+        for(int j = 0; j < this->getColsCount(); ++j) {
+            det += sign * this->get(0, j) * this->subMatrix(0, j, true)->determinant();
+            sign = -sign;
+        }
+    }
+    
+    return det;
+}
 
 
