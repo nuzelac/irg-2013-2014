@@ -7,10 +7,12 @@
 //
 
 #include <iostream>
-#include "IVector.h"
+#include "Vector.h"
 
 int main(int argc, const char * argv[])
 {
+    IVector *a = Vector::parseSimple("3 1 3");
+    
     return 0;
 }
 

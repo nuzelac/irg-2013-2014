@@ -11,8 +11,10 @@
 
 #include "AbstractVector.h"
 #include <string>
+#include <vector>
+#include <sstream>
 
-class Vector : AbstractVector {
+class Vector : public AbstractVector {
 private:
     double* elements;
     int dimension;
@@ -26,7 +28,7 @@ public:
     virtual int getDimension();
     virtual IVector* copy();
     virtual IVector* newInstance(int);
-    static Vector parseSimple(std::string);
+    static Vector* parseSimple(std::string);
 };
 
 #endif /* defined(__IRG__Vector__) */

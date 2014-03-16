@@ -67,3 +67,21 @@ IVector* Vector::newInstance(int dimension) {
     
     return new Vector(arr);
 }
+
+Vector* Vector::parseSimple(std::string str) {
+    std::string buf;
+    std::stringstream ss(str); // Insert the string into a stream
+    
+    std::vector<std::string> tokens; // Create vector to hold our words
+    
+    while (ss >> buf)
+        tokens.push_back(buf);
+    
+    for(int i = 0; i < tokens.size(); ++i) {
+        printf("%s\n", tokens[i].c_str());
+    }
+    
+//    
+//    return new Vector(elements);
+    return nullptr;
+}
