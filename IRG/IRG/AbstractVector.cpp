@@ -145,3 +145,17 @@ IVector* AbstractVector::nVectorProduct(IVector *other) {
     
     return newVector;
 }
+
+IVector* AbstractVector::nFromHomogeneus() {
+    if(this->getDimension() < 2)
+        throw "Incompatible vector";
+    
+    IVector *newVector = this->newInstance(this->getDimension() - 1);
+    double homo = this->get(this->getDimension() - 1);
+    
+    for(int i = 0; i < this->getDimension()-1; ++i) {
+        newVector->set(i, this->get(i) / homo);
+    }
+    
+    return newVector;
+}
