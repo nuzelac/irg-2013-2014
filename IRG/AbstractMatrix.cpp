@@ -10,9 +10,6 @@
 #include "MatrixTransposeView.h"
 #include "MatrixSubMatrixView.h"
 
-//virtual double** toArray();
-//virtual std::string toString();
-//virtual std::string toString(int);
 //virtual IVector* toVector(bool);
 
 IMatrix* AbstractMatrix::nTranspose(bool live) {
@@ -170,4 +167,36 @@ IMatrix* AbstractMatrix::nInvert() {
     return mat;
 }
 
+double** AbstractMatrix::toArray() {
+    double **arr;
+    
+    arr = new double*[this->getRowsCount()];
+    for(int i = 0; i < this->getRowsCount(); ++i) {
+        arr[i] = new double[this->getColsCount()];
+        
+        for(int j = 0; j < this->getColsCount(); ++j) {
+            arr[i][j] = this->get(i, j);
+        }
+    }
+    
+    return arr;
+}
 
+std::string AbstractMatrix::toString() {
+    return this->toString(3);
+}
+
+std::string AbstractMatrix::toString(int precision) {
+    std::string s;
+    char buff[100];
+    
+    for(int i = 0; i < this->getRowsCount(); ++i) {
+        for(int j = 0; j < this->getColsCount(); ++j) {
+            memset(buff, 0, sizeof(buff));
+            sprintf(buff, "%.*lf", precision, this->get(i, j));
+            s += buff;
+        }
+    }
+    
+    return s;
+}
