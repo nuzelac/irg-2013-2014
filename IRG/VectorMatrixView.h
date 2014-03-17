@@ -11,6 +11,7 @@
 
 #include "AbstractVector.h"
 #include "IVector.h"
+#include "Vector.h"
 
 class VectorMatrixView : public AbstractVector {
 private:

@@ -38,3 +38,22 @@ int VectorMatrixView::getDimension() {
     else
         return this->mat->getRowsCount();
 }
+
+IVector* VectorMatrixView::copy() {
+    double *elements = new double[this->getDimension()];
+    for(int i = 0; i < this->getDimension(); ++i) {
+        elements[i] = this->get(i);
+    }
+    
+    IVector *vector = new Vector(elements, this->getDimension());
+    delete[] elements;
+    
+    return vector;
+}
+
+IVector* VectorMatrixView::newInstance(int dim) {
+        double *arr = new double[dimension];
+        memset(arr, 0, dimension * sizeof(double));
+        
+        return new Vector(arr, this->dimension);
+}
