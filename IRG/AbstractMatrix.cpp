@@ -191,11 +191,13 @@ std::string AbstractMatrix::toString(int precision) {
     char buff[100];
     
     for(int i = 0; i < this->getRowsCount(); ++i) {
+        s += "[";
         for(int j = 0; j < this->getColsCount(); ++j) {
             memset(buff, 0, sizeof(buff));
-            sprintf(buff, "%.*lf", precision, this->get(i, j));
+            sprintf(buff, "%.*lf ", precision, this->get(i, j));
             s += buff;
         }
+        s += "]";
     }
     
     return s;
