@@ -70,9 +70,9 @@ IVector* Vector::newInstance(int dimension) {
 
 Vector* Vector::parseSimple(std::string str) {
     std::string buf;
-    std::stringstream ss(str); // Insert the string into a stream
+    std::stringstream ss(str);
     
-    std::vector<double> tokens; // Create vector to hold our words
+    std::vector<double> tokens;
     
     while (ss >> buf)
         tokens.push_back(atof(buf.c_str()));

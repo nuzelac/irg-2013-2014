@@ -10,6 +10,8 @@
 #define __IRG__Matrix__
 
 #include "AbstractMatrix.h"
+#include <vector>
+#include <sstream>
 
 class Matrix : public AbstractMatrix {
 private:
@@ -19,6 +21,7 @@ private:
 public:
     Matrix(int, int);
     Matrix(int, int, double**, bool);
+    virtual ~Matrix();
     virtual int getRowsCount();
     virtual int getColsCount();
     virtual double get(int, int);
