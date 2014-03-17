@@ -18,6 +18,7 @@
 		3F90C54518D646DC00983B1D /* MatrixSubMatrixView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3F90C54318D646DC00983B1D /* MatrixSubMatrixView.cpp */; };
 		3FF40A9518D703BF00F9D114 /* Matrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3FF40A9318D703BF00F9D114 /* Matrix.cpp */; };
 		3FF40A9818D718FC00F9D114 /* MatrixVectorView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3FF40A9618D718FC00F9D114 /* MatrixVectorView.cpp */; };
+		3FF40A9B18D726B700F9D114 /* VectorMatrixView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3FF40A9918D726B700F9D114 /* VectorMatrixView.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -55,6 +56,8 @@
 		3FF40A9418D703BF00F9D114 /* Matrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Matrix.h; sourceTree = "<group>"; };
 		3FF40A9618D718FC00F9D114 /* MatrixVectorView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MatrixVectorView.cpp; sourceTree = "<group>"; };
 		3FF40A9718D718FC00F9D114 /* MatrixVectorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatrixVectorView.h; sourceTree = "<group>"; };
+		3FF40A9918D726B700F9D114 /* VectorMatrixView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VectorMatrixView.cpp; sourceTree = "<group>"; };
+		3FF40A9A18D726B700F9D114 /* VectorMatrixView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VectorMatrixView.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +92,8 @@
 				3FF40A9418D703BF00F9D114 /* Matrix.h */,
 				3FF40A9618D718FC00F9D114 /* MatrixVectorView.cpp */,
 				3FF40A9718D718FC00F9D114 /* MatrixVectorView.h */,
+				3FF40A9918D726B700F9D114 /* VectorMatrixView.cpp */,
+				3FF40A9A18D726B700F9D114 /* VectorMatrixView.h */,
 			);
 			name = lib;
 			sourceTree = "<group>";
@@ -174,6 +179,7 @@
 				3F55AD3318D3856D006B46FF /* IVector.cpp in Sources */,
 				3F55AD3618D38895006B46FF /* AbstractVector.cpp in Sources */,
 				3FF40A9518D703BF00F9D114 /* Matrix.cpp in Sources */,
+				3FF40A9B18D726B700F9D114 /* VectorMatrixView.cpp in Sources */,
 				3F34A3B418D6289200FE9A96 /* AbstractMatrix.cpp in Sources */,
 				3F34A3AD18D5FCD100FE9A96 /* Vector.cpp in Sources */,
 				3FF40A9818D718FC00F9D114 /* MatrixVectorView.cpp in Sources */,
