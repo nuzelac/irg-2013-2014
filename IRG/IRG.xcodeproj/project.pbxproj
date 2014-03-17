@@ -16,6 +16,7 @@
 		3F55AD3918D38AD5006B46FF /* IMatrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3F55AD3718D38AD5006B46FF /* IMatrix.cpp */; };
 		3F90C54218D646C900983B1D /* MatrixTransposeView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3F90C54018D646C900983B1D /* MatrixTransposeView.cpp */; };
 		3F90C54518D646DC00983B1D /* MatrixSubMatrixView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3F90C54318D646DC00983B1D /* MatrixSubMatrixView.cpp */; };
+		3FF40A9518D703BF00F9D114 /* Matrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3FF40A9318D703BF00F9D114 /* Matrix.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -49,6 +50,8 @@
 		3F90C54118D646C900983B1D /* MatrixTransposeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatrixTransposeView.h; sourceTree = "<group>"; };
 		3F90C54318D646DC00983B1D /* MatrixSubMatrixView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MatrixSubMatrixView.cpp; sourceTree = "<group>"; };
 		3F90C54418D646DC00983B1D /* MatrixSubMatrixView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatrixSubMatrixView.h; sourceTree = "<group>"; };
+		3FF40A9318D703BF00F9D114 /* Matrix.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Matrix.cpp; sourceTree = "<group>"; };
+		3FF40A9418D703BF00F9D114 /* Matrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Matrix.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +82,8 @@
 				3F90C54118D646C900983B1D /* MatrixTransposeView.h */,
 				3F90C54318D646DC00983B1D /* MatrixSubMatrixView.cpp */,
 				3F90C54418D646DC00983B1D /* MatrixSubMatrixView.h */,
+				3FF40A9318D703BF00F9D114 /* Matrix.cpp */,
+				3FF40A9418D703BF00F9D114 /* Matrix.h */,
 			);
 			name = lib;
 			sourceTree = "<group>";
@@ -163,6 +168,7 @@
 				3F90C54218D646C900983B1D /* MatrixTransposeView.cpp in Sources */,
 				3F55AD3318D3856D006B46FF /* IVector.cpp in Sources */,
 				3F55AD3618D38895006B46FF /* AbstractVector.cpp in Sources */,
+				3FF40A9518D703BF00F9D114 /* Matrix.cpp in Sources */,
 				3F34A3B418D6289200FE9A96 /* AbstractMatrix.cpp in Sources */,
 				3F34A3AD18D5FCD100FE9A96 /* Vector.cpp in Sources */,
 				3F55AD3918D38AD5006B46FF /* IMatrix.cpp in Sources */,
