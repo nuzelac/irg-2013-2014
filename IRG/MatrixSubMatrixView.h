@@ -22,7 +22,7 @@ private:
     
 public:
     MatrixSubMatrixView(IMatrix*, int, int);
-    ~MatrixSubMatrixView();
+    virtual ~MatrixSubMatrixView();
     virtual int getRowsCount();
     virtual int getColsCount();
     virtual double get(int, int);

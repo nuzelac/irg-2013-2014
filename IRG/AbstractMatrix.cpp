@@ -7,14 +7,32 @@
 //
 
 #include "AbstractMatrix.h"
+#include "MatrixTransposeView.h"
+#include "MatrixSubMatrixView.h"
 
-//virtual IMatrix* nTranspose(bool);
-//virtual IMatrix* subMatrix(int, int, bool);
-//virtual IMatrix* nInvert();
 //virtual double** toArray();
 //virtual std::string toString();
 //virtual std::string toString(int);
 //virtual IVector* toVector(bool);
+
+IMatrix* AbstractMatrix::nTranspose(bool live) {
+    
+    IMatrix *mat;
+    
+    if(live) {
+        mat = new MatrixTransposeView(this);
+    } else {
+        mat = this->newInstance(this->getColsCount(), this->getRowsCount());
+        
+        for(int i = 0; i < this->getRowsCount(); ++i) {
+            for(int j = 0; j < this->getColsCount(); ++j) {
+                mat->set(j, i, this->get(i, j));
+            }
+        }
+    }
+    
+    return mat;
+}
 
 IMatrix* AbstractMatrix::add(IMatrix *other) {
     if(this->getRowsCount() != other->getRowsCount()
@@ -116,6 +134,40 @@ double AbstractMatrix::determinant() {
     }
     
     return det;
+}
+
+IMatrix* AbstractMatrix::subMatrix(int r, int c, bool live) {
+    IMatrix *mat;
+    
+    if(live) {
+        mat = new MatrixSubMatrixView(this, r, c);
+    } else {
+        IMatrix *helper = new MatrixSubMatrixView(this, r, c);
+        mat = helper->copy();
+        delete helper;
+    }
+    
+    return mat;
+}
+
+IMatrix* AbstractMatrix::nInvert() {
+    if(this->getColsCount() != this->getRowsCount())
+        throw "Cannot calculate inverse matrix for non-square matrix";
+
+    double det = this->determinant();
+    if(det < 1e-6)
+        throw "Determinant is 0 (zero)";
+    
+    IMatrix *mat = this->newInstance(this->getRowsCount(), this->getColsCount());
+    
+    for(int i = 0; i < this->getRowsCount(); ++i) {
+        for(int j = 0; j < this->getColsCount(); ++j) {
+            double cofactor = this->subMatrix(i, j, false)->determinant();
+            mat->set(i, j, cofactor / det);
+        }
+    }
+    
+    return mat;
 }
 
 

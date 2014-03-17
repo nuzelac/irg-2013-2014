@@ -10,10 +10,22 @@
 
 MatrixSubMatrixView::MatrixSubMatrixView(IMatrix *mat, int r, int c) {
     this->mat = mat;
-    this->rowIndexes = new int[1] { r };
-    this->rowIndexesSize = 1;
-    this->colIndexes = new int[1] { c };
-    this->colIndexesSize = 1;
+    this->rowIndexesSize = this->getRowsCount()-1;
+    this->rowIndexes = new int[this->rowIndexesSize];
+    
+    for(int i = 0, rowI = 0; i < this->rowIndexesSize; ++i) {
+        if(i == r) continue;
+        rowIndexes[rowI] = i;
+        ++rowI;
+    }
+    this->colIndexesSize = this->getColsCount()-1;
+    this->colIndexes = new int[this->colIndexesSize];
+
+    for(int j = 0, colJ = 0; j < this->colIndexesSize; ++j) {
+        if(j == c) continue;
+        colIndexes[colJ] = j;
+        ++colJ;
+    }
 }
 
 MatrixSubMatrixView::MatrixSubMatrixView(IMatrix *mat, int rowsSize, int colsSize, int *rows, int *cols) {

@@ -13,6 +13,7 @@ class IVector;
 
 class IMatrix {
 public:
+    virtual ~IMatrix() =0;
     virtual int getRowsCount() =0;
     virtual int getColsCount() =0;
     virtual double get(int, int) =0;
