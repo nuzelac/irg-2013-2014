@@ -9,6 +9,8 @@
 #ifndef __IRG__IMatrix__
 #define __IRG__IMatrix__
 
+#include <string>
+
 class IVector;
 
 class IMatrix {
@@ -30,6 +32,8 @@ public:
     virtual IMatrix* subMatrix(int, int, bool) =0;
     virtual IMatrix* nInvert() =0;
     virtual double** toArray() =0;
+    virtual std::string toString() =0;
+    virtual std::string toString(int) =0;
     virtual IVector* toVector(bool) =0;
 };
 

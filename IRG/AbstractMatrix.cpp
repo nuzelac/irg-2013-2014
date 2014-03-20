@@ -198,7 +198,7 @@ std::string AbstractMatrix::toString(int precision) {
             sprintf(buff, "%.*lf ", precision, this->get(i, j));
             s += buff;
         }
-        s += "]";
+        s += "]\n";
     }
     
     return s;
