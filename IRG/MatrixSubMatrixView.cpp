@@ -10,18 +10,18 @@
 
 MatrixSubMatrixView::MatrixSubMatrixView(IMatrix *mat, int r, int c) {
     this->mat = mat;
-    this->rowIndexesSize = this->getRowsCount()-1;
+    this->rowIndexesSize = mat->getRowsCount()-1;
     this->rowIndexes = new int[this->rowIndexesSize];
     
-    for(int i = 0, rowI = 0; i < this->rowIndexesSize; ++i) {
+    for(int i = 0, rowI = 0; i < mat->getRowsCount(); ++i) {
         if(i == r) continue;
         rowIndexes[rowI] = i;
         ++rowI;
     }
-    this->colIndexesSize = this->getColsCount()-1;
+    this->colIndexesSize = mat->getColsCount()-1;
     this->colIndexes = new int[this->colIndexesSize];
 
-    for(int j = 0, colJ = 0; j < this->colIndexesSize; ++j) {
+    for(int j = 0, colJ = 0; j < mat->getColsCount(); ++j) {
         if(j == c) continue;
         colIndexes[colJ] = j;
         ++colJ;

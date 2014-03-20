@@ -57,11 +57,23 @@ void testBarocentricneKoordinate() {
 
 }
 
+void testSustavJdzbi() {
+    IMatrix *a = Matrix::parseSimple("3 5 | 2 10");
+    IMatrix *r = Matrix::parseSimple("2 | 8");
+    printf("a:\n%s", a->toString().c_str());
+    printf("Inverz:\n%s", a->nInvert()->toString().c_str());
+    IMatrix *v = a->nInvert()->nMultiply(r);
+    
+    printf("Rjesenje sustava je: ");
+    printf("%s", v->toString().c_str());
+}
+
 int main(int argc, const char * argv[])
 {
 //    testVector();
 //    testMatrix();
-    testBarocentricneKoordinate();
+//    testBarocentricneKoordinate();
+    testSustavJdzbi();
     
     return 0;
 }

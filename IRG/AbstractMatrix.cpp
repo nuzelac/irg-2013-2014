@@ -160,6 +160,7 @@ IMatrix* AbstractMatrix::nInvert() {
     
     for(int i = 0; i < this->getRowsCount(); ++i) {
         for(int j = 0; j < this->getColsCount(); ++j) {
+            printf("Submatrica:\n%s", this->subMatrix(i, j, false)->toString().c_str());
             double cofactor = this->subMatrix(i, j, false)->determinant();
             mat->set(i, j, cofactor / det);
         }
