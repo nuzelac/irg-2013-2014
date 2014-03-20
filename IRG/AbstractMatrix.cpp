@@ -100,7 +100,7 @@ IMatrix* AbstractMatrix::nMultiply(IMatrix *other) {
     if(this->getColsCount() != other->getRowsCount())
         throw "Incompatible operands";
     
-    IMatrix *mat = this->newInstance(this->getRowsCount(), this->getColsCount());
+    IMatrix *mat = this->newInstance(this->getRowsCount(), other->getColsCount());
     
     for(int i = 0; i < this->getRowsCount(); ++i) {
         for(int j = 0; j < other->getColsCount(); ++j) {
@@ -120,7 +120,9 @@ double AbstractMatrix::determinant() {
         throw "Cannot calculate determinant for non-square matrix";
     
     double det = 0;
-    if(this->getRowsCount() == 2) {
+    if(this->getRowsCount() == 1) {
+        det = this->get(0, 0);
+    } else if(this->getRowsCount() == 2) {
         det = this->get(0, 0) * this->get(1, 1)
               - this->get(0, 1) * this->get(1, 0);
     } else {
@@ -160,10 +162,11 @@ IMatrix* AbstractMatrix::nInvert() {
     
     for(int i = 0; i < this->getRowsCount(); ++i) {
         for(int j = 0; j < this->getColsCount(); ++j) {
-            printf("Submatrica:\n%s", this->subMatrix(i, j, false)->toString().c_str());
-            double cofactor = this->subMatrix(i, j, false)->determinant();
+            int sign = (((i+j) % 2 == 0) ? 1 : -1);
+            double cofactor = sign * this->subMatrix(j, i, false)->determinant();
             mat->set(i, j, cofactor / det);
         }
+        
     }
     
     return mat;
