@@ -160,6 +160,38 @@ IVector* AbstractVector::nFromHomogeneus() {
     return newVector;
 }
 
+IMatrix* AbstractVector::toRowMatrix(bool live) {
+    IMatrix *mat;
+    
+    if(live) {
+        mat = new MatrixVectorView(this, true);
+    } else {
+        mat = new Matrix(1, this->getDimension());
+        
+        for(int i = 0; i < this->getDimension(); ++i) {
+            mat->set(0, i, this->get(i));
+        }
+    }
+    
+    return mat;
+}
+
+IMatrix* AbstractVector::toColumnMatrix(bool live) {
+    IMatrix *mat;
+    
+    if(live) {
+        mat = new MatrixVectorView(this, false);
+    } else {
+        mat = new Matrix(this->getDimension(), 1);
+        
+        for(int i = 0; i < this->getDimension(); ++i) {
+            mat->set(i, 0, this->get(i));
+        }
+    }
+    
+    return mat;
+}
+
 double* AbstractVector::toArray() {
     double *arr = new double[this->getDimension()];
     

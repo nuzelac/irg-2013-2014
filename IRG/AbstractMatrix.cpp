@@ -9,6 +9,7 @@
 #include "AbstractMatrix.h"
 #include "MatrixTransposeView.h"
 #include "MatrixSubMatrixView.h"
+#include "VectorMatrixView.h"
 
 //virtual IVector* toVector(bool);
 
@@ -201,4 +202,30 @@ std::string AbstractMatrix::toString(int precision) {
     }
     
     return s;
+}
+
+IVector* AbstractMatrix::toVector(bool live) {
+    if(this->getColsCount() != 1 && this->getRowsCount() != 1) {
+        throw "Cannot cast to vector";
+    }
+    
+    IVector* vector;
+    
+    if(live) {
+        vector = new VectorMatrixView(this);
+    } else {    
+        bool rowMatrix = this->getRowsCount() == 1;
+        
+        int size = rowMatrix ? getColsCount() : getRowsCount();
+        double *elements = new double[size];
+        
+        for(int i = 0; i < size; ++i) {
+            elements[i] = rowMatrix ? this->get(0, i) : this->get(i, 0);
+        }
+        
+        vector = new Vector(elements, rowMatrix ? getColsCount() : getRowsCount());
+        delete[] elements;
+    }
+    
+    return vector;
 }

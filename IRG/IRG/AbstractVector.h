@@ -12,6 +12,7 @@
 #include "IVector.h"
 #include <cmath>
 #include <algorithm>
+#include "MatrixVectorView.h"
 
 class AbstractVector : public IVector {
 public:
@@ -28,6 +29,8 @@ public:
     virtual double scalarProduct(IVector*);
     virtual IVector* nVectorProduct(IVector*);
     virtual IVector* nFromHomogeneus();
+    virtual IMatrix* toRowMatrix(bool);
+    virtual IMatrix* toColumnMatrix(bool);
     virtual double* toArray();
     virtual IVector* copyPart(int);
 };
