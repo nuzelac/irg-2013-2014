@@ -16,6 +16,29 @@
 		3F55AD3918D38AD5006B46FF /* IMatrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3F55AD3718D38AD5006B46FF /* IMatrix.cpp */; };
 		3F90C54218D646C900983B1D /* MatrixTransposeView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3F90C54018D646C900983B1D /* MatrixTransposeView.cpp */; };
 		3F90C54518D646DC00983B1D /* MatrixSubMatrixView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3F90C54318D646DC00983B1D /* MatrixSubMatrixView.cpp */; };
+		3FDF0C3518E3244A00665329 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3FDF0C3418E3244A00665329 /* main.cpp */; };
+		3FDF0C3718E3244A00665329 /* zad124_izracun_reflektiranog_vektora.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3FDF0C3618E3244A00665329 /* zad124_izracun_reflektiranog_vektora.1 */; };
+		3FDF0C4218E326EE00665329 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3FDF0C4118E326EE00665329 /* main.cpp */; };
+		3FDF0C4418E326EE00665329 /* bibliotekaDemo.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3FDF0C4318E326EE00665329 /* bibliotekaDemo.1 */; };
+		3FDF0C4818E32A7600665329 /* Vector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3F34A3AB18D5FCD100FE9A96 /* Vector.cpp */; };
+		3FDF0C4918E32A7900665329 /* Matrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3FF40A9318D703BF00F9D114 /* Matrix.cpp */; };
+		3FDF0C4A18E32A8700665329 /* IVector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3F55AD3118D3856D006B46FF /* IVector.cpp */; };
+		3FDF0C4B18E32A8700665329 /* IVector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3F55AD3118D3856D006B46FF /* IVector.cpp */; };
+		3FDF0C4C18E32A9C00665329 /* AbstractVector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3F55AD3418D38895006B46FF /* AbstractVector.cpp */; };
+		3FDF0C4D18E32A9C00665329 /* AbstractVector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3F55AD3418D38895006B46FF /* AbstractVector.cpp */; };
+		3FDF0C4E18E32AA100665329 /* IMatrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3F55AD3718D38AD5006B46FF /* IMatrix.cpp */; };
+		3FDF0C4F18E32AA100665329 /* IMatrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3F55AD3718D38AD5006B46FF /* IMatrix.cpp */; };
+		3FDF0C5018E32AA800665329 /* AbstractMatrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3F34A3B218D6289200FE9A96 /* AbstractMatrix.cpp */; };
+		3FDF0C5118E32AA900665329 /* AbstractMatrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3F34A3B218D6289200FE9A96 /* AbstractMatrix.cpp */; };
+		3FDF0C5218E32AAB00665329 /* MatrixTransposeView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3F90C54018D646C900983B1D /* MatrixTransposeView.cpp */; };
+		3FDF0C5318E32AAD00665329 /* MatrixTransposeView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3F90C54018D646C900983B1D /* MatrixTransposeView.cpp */; };
+		3FDF0C5418E32AB100665329 /* MatrixSubMatrixView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3F90C54318D646DC00983B1D /* MatrixSubMatrixView.cpp */; };
+		3FDF0C5518E32AB200665329 /* MatrixSubMatrixView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3F90C54318D646DC00983B1D /* MatrixSubMatrixView.cpp */; };
+		3FDF0C5618E32AB400665329 /* Matrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3FF40A9318D703BF00F9D114 /* Matrix.cpp */; };
+		3FDF0C5718E32AB700665329 /* MatrixVectorView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3FF40A9618D718FC00F9D114 /* MatrixVectorView.cpp */; };
+		3FDF0C5818E32AB800665329 /* MatrixVectorView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3FF40A9618D718FC00F9D114 /* MatrixVectorView.cpp */; };
+		3FDF0C5918E32ABA00665329 /* VectorMatrixView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3FF40A9918D726B700F9D114 /* VectorMatrixView.cpp */; };
+		3FDF0C5A18E32ABA00665329 /* VectorMatrixView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3FF40A9918D726B700F9D114 /* VectorMatrixView.cpp */; };
 		3FF40A9518D703BF00F9D114 /* Matrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3FF40A9318D703BF00F9D114 /* Matrix.cpp */; };
 		3FF40A9818D718FC00F9D114 /* MatrixVectorView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3FF40A9618D718FC00F9D114 /* MatrixVectorView.cpp */; };
 		3FF40A9B18D726B700F9D114 /* VectorMatrixView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3FF40A9918D726B700F9D114 /* VectorMatrixView.cpp */; };
@@ -29,6 +52,26 @@
 			dstSubfolderSpec = 0;
 			files = (
 				3F55AD2B18D38471006B46FF /* IRG.1 in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		3FDF0C3018E3244A00665329 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+				3FDF0C3718E3244A00665329 /* zad124_izracun_reflektiranog_vektora.1 in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		3FDF0C3D18E326EE00665329 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+				3FDF0C4418E326EE00665329 /* bibliotekaDemo.1 in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
@@ -52,6 +95,12 @@
 		3F90C54118D646C900983B1D /* MatrixTransposeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatrixTransposeView.h; sourceTree = "<group>"; };
 		3F90C54318D646DC00983B1D /* MatrixSubMatrixView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MatrixSubMatrixView.cpp; sourceTree = "<group>"; };
 		3F90C54418D646DC00983B1D /* MatrixSubMatrixView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatrixSubMatrixView.h; sourceTree = "<group>"; };
+		3FDF0C3218E3244A00665329 /* zad124-izracun_reflektiranog_vektora */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "zad124-izracun_reflektiranog_vektora"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3FDF0C3418E3244A00665329 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		3FDF0C3618E3244A00665329 /* zad124_izracun_reflektiranog_vektora.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = zad124_izracun_reflektiranog_vektora.1; sourceTree = "<group>"; };
+		3FDF0C3F18E326EE00665329 /* bibliotekaDemo */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = bibliotekaDemo; sourceTree = BUILT_PRODUCTS_DIR; };
+		3FDF0C4118E326EE00665329 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		3FDF0C4318E326EE00665329 /* bibliotekaDemo.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = bibliotekaDemo.1; sourceTree = "<group>"; };
 		3FF40A9318D703BF00F9D114 /* Matrix.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Matrix.cpp; sourceTree = "<group>"; };
 		3FF40A9418D703BF00F9D114 /* Matrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Matrix.h; sourceTree = "<group>"; };
 		3FF40A9618D718FC00F9D114 /* MatrixVectorView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MatrixVectorView.cpp; sourceTree = "<group>"; };
@@ -62,6 +111,20 @@
 
 /* Begin PBXFrameworksBuildPhase section */
 		3F55AD2218D38471006B46FF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3FDF0C2F18E3244A00665329 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3FDF0C3C18E326EE00665329 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -103,6 +166,8 @@
 			children = (
 				3F34A3B018D61C0800FE9A96 /* lib */,
 				3F55AD2718D38471006B46FF /* IRG */,
+				3FDF0C3318E3244A00665329 /* zad124-izracun_reflektiranog_vektora */,
+				3FDF0C4018E326EE00665329 /* bibliotekaDemo */,
 				3F55AD2618D38471006B46FF /* Products */,
 			);
 			sourceTree = "<group>";
@@ -111,6 +176,8 @@
 			isa = PBXGroup;
 			children = (
 				3F55AD2518D38471006B46FF /* IRG */,
+				3FDF0C3218E3244A00665329 /* zad124-izracun_reflektiranog_vektora */,
+				3FDF0C3F18E326EE00665329 /* bibliotekaDemo */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -122,6 +189,24 @@
 				3F55AD2A18D38471006B46FF /* IRG.1 */,
 			);
 			path = IRG;
+			sourceTree = "<group>";
+		};
+		3FDF0C3318E3244A00665329 /* zad124-izracun_reflektiranog_vektora */ = {
+			isa = PBXGroup;
+			children = (
+				3FDF0C3418E3244A00665329 /* main.cpp */,
+				3FDF0C3618E3244A00665329 /* zad124_izracun_reflektiranog_vektora.1 */,
+			);
+			path = "zad124-izracun_reflektiranog_vektora";
+			sourceTree = "<group>";
+		};
+		3FDF0C4018E326EE00665329 /* bibliotekaDemo */ = {
+			isa = PBXGroup;
+			children = (
+				3FDF0C4118E326EE00665329 /* main.cpp */,
+				3FDF0C4318E326EE00665329 /* bibliotekaDemo.1 */,
+			);
+			path = bibliotekaDemo;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -142,6 +227,40 @@
 			name = IRG;
 			productName = IRG;
 			productReference = 3F55AD2518D38471006B46FF /* IRG */;
+			productType = "com.apple.product-type.tool";
+		};
+		3FDF0C3118E3244A00665329 /* zad124-izracun_reflektiranog_vektora */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3FDF0C3A18E3244A00665329 /* Build configuration list for PBXNativeTarget "zad124-izracun_reflektiranog_vektora" */;
+			buildPhases = (
+				3FDF0C2E18E3244A00665329 /* Sources */,
+				3FDF0C2F18E3244A00665329 /* Frameworks */,
+				3FDF0C3018E3244A00665329 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "zad124-izracun_reflektiranog_vektora";
+			productName = "zad124-izracun_reflektiranog_vektora";
+			productReference = 3FDF0C3218E3244A00665329 /* zad124-izracun_reflektiranog_vektora */;
+			productType = "com.apple.product-type.tool";
+		};
+		3FDF0C3E18E326EE00665329 /* bibliotekaDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3FDF0C4518E326EE00665329 /* Build configuration list for PBXNativeTarget "bibliotekaDemo" */;
+			buildPhases = (
+				3FDF0C3B18E326EE00665329 /* Sources */,
+				3FDF0C3C18E326EE00665329 /* Frameworks */,
+				3FDF0C3D18E326EE00665329 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = bibliotekaDemo;
+			productName = bibliotekaDemo;
+			productReference = 3FDF0C3F18E326EE00665329 /* bibliotekaDemo */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -166,6 +285,8 @@
 			projectRoot = "";
 			targets = (
 				3F55AD2418D38471006B46FF /* IRG */,
+				3FDF0C3118E3244A00665329 /* zad124-izracun_reflektiranog_vektora */,
+				3FDF0C3E18E326EE00665329 /* bibliotekaDemo */,
 			);
 		};
 /* End PBXProject section */
@@ -186,6 +307,41 @@
 				3F55AD3918D38AD5006B46FF /* IMatrix.cpp in Sources */,
 				3F55AD2918D38471006B46FF /* main.cpp in Sources */,
 				3F90C54518D646DC00983B1D /* MatrixSubMatrixView.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3FDF0C2E18E3244A00665329 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3FDF0C5618E32AB400665329 /* Matrix.cpp in Sources */,
+				3FDF0C4A18E32A8700665329 /* IVector.cpp in Sources */,
+				3FDF0C5918E32ABA00665329 /* VectorMatrixView.cpp in Sources */,
+				3FDF0C5218E32AAB00665329 /* MatrixTransposeView.cpp in Sources */,
+				3FDF0C5718E32AB700665329 /* MatrixVectorView.cpp in Sources */,
+				3FDF0C4D18E32A9C00665329 /* AbstractVector.cpp in Sources */,
+				3FDF0C4E18E32AA100665329 /* IMatrix.cpp in Sources */,
+				3FDF0C3518E3244A00665329 /* main.cpp in Sources */,
+				3FDF0C5418E32AB100665329 /* MatrixSubMatrixView.cpp in Sources */,
+				3FDF0C5118E32AA900665329 /* AbstractMatrix.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3FDF0C3B18E326EE00665329 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3FDF0C5018E32AA800665329 /* AbstractMatrix.cpp in Sources */,
+				3FDF0C4B18E32A8700665329 /* IVector.cpp in Sources */,
+				3FDF0C4918E32A7900665329 /* Matrix.cpp in Sources */,
+				3FDF0C4818E32A7600665329 /* Vector.cpp in Sources */,
+				3FDF0C5A18E32ABA00665329 /* VectorMatrixView.cpp in Sources */,
+				3FDF0C4218E326EE00665329 /* main.cpp in Sources */,
+				3FDF0C4F18E32AA100665329 /* IMatrix.cpp in Sources */,
+				3FDF0C5818E32AB800665329 /* MatrixVectorView.cpp in Sources */,
+				3FDF0C5518E32AB200665329 /* MatrixSubMatrixView.cpp in Sources */,
+				3FDF0C4C18E32A9C00665329 /* AbstractVector.cpp in Sources */,
+				3FDF0C5318E32AAD00665329 /* MatrixTransposeView.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,6 +432,42 @@
 			};
 			name = Release;
 		};
+		3FDF0C3818E3244A00665329 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		3FDF0C3918E3244A00665329 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		3FDF0C4618E326EE00665329 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		3FDF0C4718E326EE00665329 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -296,6 +488,22 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		3FDF0C3A18E3244A00665329 /* Build configuration list for PBXNativeTarget "zad124-izracun_reflektiranog_vektora" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3FDF0C3818E3244A00665329 /* Debug */,
+				3FDF0C3918E3244A00665329 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		3FDF0C4518E326EE00665329 /* Build configuration list for PBXNativeTarget "bibliotekaDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3FDF0C4618E326EE00665329 /* Debug */,
+				3FDF0C4718E326EE00665329 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};

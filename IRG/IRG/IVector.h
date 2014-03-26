@@ -35,6 +35,8 @@ public:
     virtual IMatrix* toRowMatrix(bool) =0;
     virtual IMatrix* toColumnMatrix(bool) =0;
     virtual double* toArray() =0;
+    virtual std::string toString() =0;
+    virtual std::string toString(int) =0;    
 };
 
 #endif /* defined(__IRG__IVector__) */

@@ -9,10 +9,30 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>bibliotekaDemo.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
+		<key>zad124-izracun_reflektiranog_vektora.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>3F55AD2418D38471006B46FF</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>3FDF0C3118E3244A00665329</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>3FDF0C3E18E326EE00665329</key>
 		<dict>
 			<key>primary</key>
 			<true/>

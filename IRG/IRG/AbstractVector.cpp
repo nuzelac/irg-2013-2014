@@ -215,3 +215,24 @@ IVector* AbstractVector::copyPart(int dim) {
     
     return newVector;
 }
+
+std::string AbstractVector::toString() {
+    return this->toString(3);
+}
+
+std::string AbstractVector::toString(int precision) {
+    std::string s;
+    char buff[100];
+    
+    s += "[";
+    for(int i = 0; i < this->getDimension(); ++i) {
+        memset(buff, 0, sizeof(buff));
+        sprintf(buff, "%.*lf ", precision, this->get(i));
+        s += buff;
+    }
+    s += "]";
+    
+    return s;
+}
+
+

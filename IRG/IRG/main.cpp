@@ -64,8 +64,18 @@ void testSustavJdzbi() {
     printf("Inverz:\n%s", a->nInvert()->toString().c_str());
     IMatrix *v = a->nInvert()->nMultiply(r);
     
-    printf("Rjesenje sustava je: ");
+    printf("Rjesenje sustava je:\n");
     printf("%s", v->toString().c_str());
+}
+
+void testBaricentricneMatrica() {
+    IMatrix *a = Matrix::parseSimple("1 5 3 | 0 0 8 | 1 1 1");
+    IMatrix *b = Matrix::parseSimple("3 | 4 | 1");
+    
+    IMatrix *r = a->nInvert()->nMultiply(b);
+    
+    printf("Rjesenje sustava je\n");
+    printf("%s", r->toString().c_str());
 }
 
 int main(int argc, const char * argv[])
@@ -73,7 +83,8 @@ int main(int argc, const char * argv[])
 //    testVector();
 //    testMatrix();
 //    testBarocentricneKoordinate();
-    testSustavJdzbi();
+//    testSustavJdzbi();
+    testBaricentricneMatrica();
     
     return 0;
 }

@@ -33,6 +33,8 @@ public:
     virtual IMatrix* toColumnMatrix(bool);
     virtual double* toArray();
     virtual IVector* copyPart(int);
+    virtual std::string toString();
+    virtual std::string toString(int);
 };
 
 #endif /* defined(__IRG__AbstractVector__) */
