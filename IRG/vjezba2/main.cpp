@@ -30,11 +30,13 @@ vector<Trokut> trokuti;
 
 vector< pair<int, int> > trenutniTrokut;
 int sirina = 400, visina = 400;
+int misX = 0, misY = 0;
 
 void reshape(int, int);
 void display();
 void renderScene();
 void mousePressedOrReleased(int, int, int, int);
+void mouseMoved(int, int);
 void keyPressed(unsigned char, int, int);
 void nacrtajKvadratic();
 void nacrtajPostojeceTrokute();
@@ -52,6 +54,7 @@ int main(int argc, char * argv[])
     glutDisplayFunc(display);
     glutReshapeFunc(reshape);
     glutMouseFunc(mousePressedOrReleased);
+    glutPassiveMotionFunc(mouseMoved);
     glutKeyboardFunc(keyPressed);
     glutMainLoop();
     return 0;
@@ -75,24 +78,6 @@ void reshape(int width, int height) {
     glLoadIdentity();
     glOrtho(0, width-1, height-1, 0, 0, 1);
     glMatrixMode(GL_MODELVIEW);
-}
-
-void mousePressedOrReleased(int button, int state, int x, int y) {
-    glutPostRedisplay();
-}
-
-void keyPressed(unsigned char key, int x, int y) {
-    if(key == 'n') {
-        ++trenutnaBoja;
-        if(trenutnaBoja == 6) trenutnaBoja = 0;
-        
-        glutPostRedisplay();
-    } else if(key == 'p') {
-        --trenutnaBoja;
-        if(trenutnaBoja == -1) trenutnaBoja = 5;
-        
-        glutPostRedisplay();
-    }
 }
 
 void renderScene() {
@@ -125,6 +110,34 @@ void nacrtajKvadratic() {
     glEnd();
 }
 
+void nacrtajPostojeceTrokute() {
+    for(int i = 0; i < (int)trokuti.size(); ++i) {
+        Trokut trokut = trokuti[i];
+        postaviBoju(trokut.boja);
+        glBegin(GL_TRIANGLES);
+        for(int j = 0 ; j < 3; ++j) {
+            glVertex2i(trokut.tocke[j].first, trokut.tocke[j].second);
+        }
+        glEnd();
+    }
+}
+
+void nacrtajNoviTrokut() {
+    postaviBoju(boje[trenutnaBoja]);
+    if(trenutniTrokut.size() == 1) {
+        glBegin(GL_LINES);
+        glVertex2i(trenutniTrokut[0].first, trenutniTrokut[0].second);
+        glVertex2i(misX, misY);
+        glEnd();
+    } else if(trenutniTrokut.size() == 2) {
+        glBegin(GL_TRIANGLES);
+        glVertex2i(trenutniTrokut[0].first, trenutniTrokut[0].second);
+        glVertex2i(trenutniTrokut[1].first, trenutniTrokut[1].second);
+        glVertex2i(misX, misY);
+        glEnd();
+    }
+}
+
 void postaviBoju(Boja boja) {
     switch(boja) {
         case CRVENA:
@@ -149,3 +162,38 @@ void postaviBoju(Boja boja) {
     
 }
 
+
+
+void mousePressedOrReleased(int button, int state, int x, int y) {
+    if(state == GLUT_DOWN) {
+        trenutniTrokut.push_back(make_pair(x, y));
+        if(trenutniTrokut.size() == 3) {
+            Trokut trokut;
+            trokut.boja = boje[trenutnaBoja];
+            for(int i = 0; i < 3; ++i) {
+                trokut.tocke[i] = trenutniTrokut[i];
+            }
+            trokuti.push_back(trokut);
+            trenutniTrokut.clear();
+        }
+        glutPostRedisplay();
+    }
+}
+
+void keyPressed(unsigned char key, int x, int y) {
+    if(key == 'n') {
+        ++trenutnaBoja;
+        if(trenutnaBoja == 6) trenutnaBoja = 0;
+        glutPostRedisplay();
+    } else if(key == 'p') {
+        --trenutnaBoja;
+        if(trenutnaBoja == -1) trenutnaBoja = 5;
+        glutPostRedisplay();
+    }
+}
+
+void mouseMoved(int x, int y) {
+    misX = x;
+    misY = y;
+    glutPostRedisplay();
+}
