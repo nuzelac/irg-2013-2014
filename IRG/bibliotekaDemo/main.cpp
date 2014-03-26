@@ -19,7 +19,14 @@ int main(int argc, const char * argv[])
     printf("s = %s\n", s->toString().c_str());
     
     IVector *v2 = v1->nVectorProduct(Vector::parseSimple("2 2 4"));
-    printf("v2 = %s\n", s->toString().c_str());
+    printf("v2 = %s\n", v2->toString().c_str());
+    
+    IVector *v3 = v2->normalize();
+    printf("v3 = %s\n", v3->toString().c_str());
+    
+    IVector *v4 = v2->scalarMultiply(-1);
+    printf("v4 = %s\n", v4->toString().c_str());
+    
     return 0;
 }
 
