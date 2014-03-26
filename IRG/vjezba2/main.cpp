@@ -11,26 +11,54 @@
 #include <OpenGL/gl.h>
 #include <OpenGL/glu.h>
 #include <GLUT/glut.h>
+#include <iostream>
+#include <algorithm>
+#include <vector>
+
+using namespace std;
+
+// model podataka
+enum Boja { CRVENA, ZELENA, PLAVA, CIJAN, ZUTA, MAGENTA };
+Boja boje[] = { CRVENA, ZELENA, PLAVA, CIJAN, ZUTA, MAGENTA };
+int trenutnaBoja = 0;
+
+struct Trokut {
+    pair<int, int> tocke[3];
+    Boja boja;
+};
+vector<Trokut> trokuti;
+
+vector< pair<int, int> > trenutniTrokut;
+int sirina = 400, visina = 400;
 
 void reshape(int, int);
 void display();
 void renderScene();
+void mousePressedOrReleased(int, int, int, int);
+void keyPressed(unsigned char, int, int);
+void nacrtajKvadratic();
+void nacrtajPostojeceTrokute();
+void nacrtajNoviTrokut();
+void postaviBoju(Boja);
+
 
 int main(int argc, char * argv[])
 {
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_DOUBLE);
-    glutInitWindowSize(200, 200);
-    glutInitWindowPosition(0, 0);
-    glutCreateWindow("Primjer 1");
+    glutInitWindowSize(sirina, visina);
+    glutInitWindowPosition(200, 200);
+    glutCreateWindow("Vjezba 2");
     glutDisplayFunc(display);
     glutReshapeFunc(reshape);
+    glutMouseFunc(mousePressedOrReleased);
+    glutKeyboardFunc(keyPressed);
     glutMainLoop();
     return 0;
 }
 
 void display() {
-    glClearColor(1.0f, 0.0f, 0.0f, 1.0f);
+    glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT);
     glLoadIdentity();
     // crtanje scene:
@@ -39,6 +67,8 @@ void display() {
 }
 
 void reshape(int width, int height) {
+    sirina = width; visina = height;
+    
     glDisable(GL_DEPTH_TEST);
     glViewport(0, 0, (GLsizei)width, (GLsizei)height);
     glMatrixMode(GL_PROJECTION);
@@ -47,17 +77,75 @@ void reshape(int width, int height) {
     glMatrixMode(GL_MODELVIEW);
 }
 
+void mousePressedOrReleased(int button, int state, int x, int y) {
+    glutPostRedisplay();
+}
+
+void keyPressed(unsigned char key, int x, int y) {
+    if(key == 'n') {
+        ++trenutnaBoja;
+        if(trenutnaBoja == 6) trenutnaBoja = 0;
+        
+        glutPostRedisplay();
+    } else if(key == 'p') {
+        --trenutnaBoja;
+        if(trenutnaBoja == -1) trenutnaBoja = 5;
+        
+        glutPostRedisplay();
+    }
+}
+
 void renderScene() {
     glPointSize(1.0f);
-    glColor3f(0.0f, 1.0f, 1.0f);
-    glVertex2i(0, 0);
-    glVertex2i(2, 2);
-    glVertex2i(4, 4);
-    glEnd();
-    glBegin(GL_LINE_STRIP);
-    glVertex2i(50, 50);
-    glVertex2i(150, 150);
-    glVertex2i(50, 150);
-    glVertex2i(50, 50);
+    
+    nacrtajKvadratic();
+    nacrtajPostojeceTrokute();
+    nacrtajNoviTrokut();
+    
+//    glBegin(GL_POINTS);
+//    glVertex2i(0, 0);
+//    glVertex2i(2, 2);
+//    glVertex2i(4, 4);
+//    glEnd();
+//    glBegin(GL_LINE_STRIP);
+//    glVertex2i(50, 50);
+//    glVertex2i(150, 150);
+//    glVertex2i(50, 150);
+//    glVertex2i(50, 50);
+//    glEnd();
+}
+
+void nacrtajKvadratic() {
+    postaviBoju(boje[trenutnaBoja]);
+    glBegin(GL_QUADS);
+    glVertex2i(sirina - 6, 0);
+    glVertex2i(sirina - 1, 0);
+    glVertex2i(sirina - 1, 5);
+    glVertex2i(sirina - 6, 5);
     glEnd();
 }
+
+void postaviBoju(Boja boja) {
+    switch(boja) {
+        case CRVENA:
+            glColor3f(1.0f, 0.0f, 0.0f);
+            break;
+        case ZELENA:
+            glColor3f(0.0f, 1.0f, 0.0f);
+            break;
+        case PLAVA:
+            glColor3f(0.0f, 0.0f, 1.0f);
+            break;
+        case CIJAN:
+            glColor3f(0.0f, 1.0f, 1.0f);
+            break;
+        case ZUTA:
+            glColor3f(1.0f, 1.0f, 0.0f);
+            break;
+        case MAGENTA:
+            glColor3f(1.0f, 0.0f, 1.0f);
+            break;
+    }
+    
+}
+
