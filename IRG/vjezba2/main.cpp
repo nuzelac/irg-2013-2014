@@ -86,18 +86,6 @@ void renderScene() {
     nacrtajKvadratic();
     nacrtajPostojeceTrokute();
     nacrtajNoviTrokut();
-    
-//    glBegin(GL_POINTS);
-//    glVertex2i(0, 0);
-//    glVertex2i(2, 2);
-//    glVertex2i(4, 4);
-//    glEnd();
-//    glBegin(GL_LINE_STRIP);
-//    glVertex2i(50, 50);
-//    glVertex2i(150, 150);
-//    glVertex2i(50, 150);
-//    glVertex2i(50, 50);
-//    glEnd();
 }
 
 void nacrtajKvadratic() {
