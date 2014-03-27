@@ -32,6 +32,10 @@ pair<int, int> prva, druga;
 int sirina = 400, visina = 400;
 int misX = 0, misY = 0;
 bool kontrola = true, odsijecanje = true;
+double xmin = sirina/2 - sirina/4
+     , ymin = visina/2 - visina/4
+     , xmax = sirina/2 + sirina/4
+     , ymax = visina/2 + visina/4;
 
 void reshape(int, int);
 void display();
@@ -46,6 +50,7 @@ void bresenham_nacrtaj_cjelobrojni(pair<int, int>, pair<int, int>);
 void bresenham_nacrtaj_cjelobrojni2(pair<int, int>, pair<int, int>);
 void bresenham_nacrtaj_cjelobrojni3(pair<int, int>, pair<int, int>);
 void nacrtaj_liniju_opengl(pair<int, int>, pair<int, int>);
+void clipping(pair<int, int>, pair<int, int>);
 
 int main(int argc, char * argv[])
 {
@@ -74,6 +79,10 @@ void display() {
 
 void reshape(int width, int height) {
     sirina = width; visina = height;
+    xmin = sirina/2 - sirina/4;
+    ymin = visina/2 - visina/4;
+    xmax = sirina/2 + sirina/4;
+    ymax = visina/2 + visina/4;
     
     glDisable(GL_DEPTH_TEST);
     glViewport(0, 0, (GLsizei)width, (GLsizei)height);
@@ -132,19 +141,23 @@ void mouseMoved(int x, int y) {
 void nacrtajPravokutnik() {
     glColor3f(0.0f, 1.0f, 0.0f);
     glBegin(GL_LINE_LOOP);
-    glVertex2i(sirina/2 - sirina/4, visina/2 - visina/4);
-    glVertex2i(sirina/2 + sirina/4, visina/2 - visina/4);
-    glVertex2i(sirina/2 + sirina/4, visina/2 + visina/4);
-    glVertex2i(sirina/2 - sirina/4, visina/2 + visina/4);
+    glVertex2i(xmin, ymin);
+    glVertex2i(xmax, ymin);
+    glVertex2i(xmax, ymax);
+    glVertex2i(xmin, ymax);
     glEnd();
 }
 
 void nacrtajPostojeceLinije() {
     for(int i = 0; i < (int)linije.size(); ++i) {
         glColor3f(0.0f, 0.0f, 0.0f);
-        glBegin(GL_POINTS);
-        bresenham_nacrtaj_cjelobrojni(linije[i].poc, linije[i].kraj);
-        glEnd();
+        if(odsijecanje) {
+            clipping(linije[i].poc, linije[i].kraj);
+        } else {
+            glBegin(GL_POINTS);
+            bresenham_nacrtaj_cjelobrojni(linije[i].poc, linije[i].kraj);
+            glEnd();
+        }
         
         if(kontrola) {
             double x = linije[i].kraj.first - linije[i].poc.first;
@@ -172,9 +185,13 @@ void nacrtajPostojeceLinije() {
 void nacrtajNovuLiniju() {
     if(!unosPrveTocke) {
         glColor3f(0.0f, 0.0f, 0.0f);
-        glBegin(GL_POINTS);
-        bresenham_nacrtaj_cjelobrojni(prva, make_pair(misX, misY));
-        glEnd();
+        if(odsijecanje) {
+            clipping(prva, make_pair(misX, misY));
+        } else {
+            glBegin(GL_POINTS);
+            bresenham_nacrtaj_cjelobrojni(prva, make_pair(misX, misY));
+            glEnd();
+        }
         
         if(kontrola) {
             double x = misX - prva.first;
@@ -286,4 +303,86 @@ void nacrtaj_liniju_opengl(pair<int, int> poc, pair<int, int> kraj) {
     glVertex2i(poc.first, poc.second);
     glVertex2i(kraj.first, kraj.second);
     glEnd();
+}
+
+int kod(pair<int, int> tocka) {
+    int kod = 0;
+    
+    if(tocka.second > ymax)
+        kod |= 8;
+    if(tocka.second < ymin)
+        kod |= 4;
+    if(tocka.first > xmax)
+        kod |= 2;
+    if(tocka.first < xmin)
+        kod |= 1;
+    
+    return kod;
+}
+
+void clipping(pair<int, int> poc, pair<int, int> kraj) {
+    int c1 = kod(poc), c2 = kod(kraj);
+    pair<int, int> noviPoc = poc;
+    pair<int, int> noviKraj = kraj;
+    printf("poc: %d %d\n", noviPoc.first, noviPoc.second);
+    printf("kraj: %d %d\n", noviKraj.first, noviKraj.second);
+    
+    
+    while(true) {
+    
+        printf("bok %d %d\n", c1, c2);
+        if(c1 == c2 && c1 == 0) {
+            glBegin(GL_POINTS);
+            bresenham_nacrtaj_cjelobrojni(noviPoc, noviKraj);
+            glEnd();
+            return;
+        }
+        
+        if((c1 & c2) != 0) {
+            // linija je potpuno izvan prozora
+            return;
+        }
+        
+        // ovo racunam ovdje zato sto gore moze biti dijeljenja s nulom
+        double a = (double)(kraj.second - poc.second) / (kraj.first - poc.first);
+        double b = -a * poc.first + poc.second;
+        
+        if(c1) {
+            if(c1&8) {
+                printf("je %lf %lf %lf\n", ymax, a, b);
+                noviPoc.first = (ymax - b) / a;
+                noviPoc.second = ymax;
+            } else if(c1&4) {
+                noviPoc.first = (ymin - b) / a;
+                noviPoc.second = ymin;
+            } else if(c1&2) {
+                noviPoc.first = xmax;
+                noviPoc.second = a * xmax + b;
+            } else if(c1&1) {
+                noviPoc.first = xmin;
+                noviPoc.second = a * xmin + b;
+            }
+            
+            c1 = kod(noviPoc);
+        } else {
+            if(c2&8) {
+                noviKraj.first = (ymax - b) / a;
+                noviKraj.second = ymax;
+            } else if(c2&4) {
+                noviKraj.first = (ymin - b) / a;
+                noviKraj.second = ymin;
+            } else if(c2&2) {
+                noviKraj.first = xmax;
+                noviKraj.second = a * xmax + b;
+            } else if(c2&1) {
+                noviKraj.first = xmin;
+                noviKraj.second = a * xmin + b;
+            }
+            
+            c2 = kod(noviKraj);
+        }
+    
+    printf("noviPoc: %d %d\n", noviPoc.first, noviPoc.second);
+    printf("noviKraj: %d %d\n", noviKraj.first, noviKraj.second);
+    }
 }
