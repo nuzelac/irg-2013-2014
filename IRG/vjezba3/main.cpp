@@ -324,13 +324,13 @@ void clipping(pair<int, int> poc, pair<int, int> kraj) {
     int c1 = kod(poc), c2 = kod(kraj);
     pair<int, int> noviPoc = poc;
     pair<int, int> noviKraj = kraj;
-    printf("poc: %d %d\n", noviPoc.first, noviPoc.second);
-    printf("kraj: %d %d\n", noviKraj.first, noviKraj.second);
+//    printf("poc: %d %d\n", noviPoc.first, noviPoc.second);
+//    printf("kraj: %d %d\n", noviKraj.first, noviKraj.second);
     
     
     while(true) {
     
-        printf("bok %d %d\n", c1, c2);
+//        printf("bok %d %d\n", c1, c2);
         if(c1 == c2 && c1 == 0) {
             glBegin(GL_POINTS);
             bresenham_nacrtaj_cjelobrojni(noviPoc, noviKraj);
@@ -382,7 +382,7 @@ void clipping(pair<int, int> poc, pair<int, int> kraj) {
             c2 = kod(noviKraj);
         }
     
-    printf("noviPoc: %d %d\n", noviPoc.first, noviPoc.second);
-    printf("noviKraj: %d %d\n", noviKraj.first, noviKraj.second);
+//    printf("noviPoc: %d %d\n", noviPoc.first, noviPoc.second);
+//    printf("noviKraj: %d %d\n", noviKraj.first, noviKraj.second);
     }
 }
