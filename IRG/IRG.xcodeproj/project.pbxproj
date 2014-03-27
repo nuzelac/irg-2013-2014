@@ -57,6 +57,7 @@
 		3FDF0C8218E41AA400665329 /* Matrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3FF40A9318D703BF00F9D114 /* Matrix.cpp */; };
 		3FDF0C8318E41AA400665329 /* MatrixVectorView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3FF40A9618D718FC00F9D114 /* MatrixVectorView.cpp */; };
 		3FDF0C8418E41AA400665329 /* VectorMatrixView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3FF40A9918D726B700F9D114 /* VectorMatrixView.cpp */; };
+		3FDF0C8518E437E100665329 /* Vector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3F34A3AB18D5FCD100FE9A96 /* Vector.cpp */; };
 		3FF40A9518D703BF00F9D114 /* Matrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3FF40A9318D703BF00F9D114 /* Matrix.cpp */; };
 		3FF40A9818D718FC00F9D114 /* MatrixVectorView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3FF40A9618D718FC00F9D114 /* MatrixVectorView.cpp */; };
 		3FF40A9B18D726B700F9D114 /* VectorMatrixView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3FF40A9918D726B700F9D114 /* VectorMatrixView.cpp */; };
@@ -443,6 +444,7 @@
 				3FDF0C5918E32ABA00665329 /* VectorMatrixView.cpp in Sources */,
 				3FDF0C5218E32AAB00665329 /* MatrixTransposeView.cpp in Sources */,
 				3FDF0C5718E32AB700665329 /* MatrixVectorView.cpp in Sources */,
+				3FDF0C8518E437E100665329 /* Vector.cpp in Sources */,
 				3FDF0C4D18E32A9C00665329 /* AbstractVector.cpp in Sources */,
 				3FDF0C4E18E32AA100665329 /* IMatrix.cpp in Sources */,
 				3FDF0C3518E3244A00665329 /* main.cpp in Sources */,
