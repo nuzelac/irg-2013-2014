@@ -24,6 +24,11 @@
 			<key>orderHint</key>
 			<integer>4</integer>
 		</dict>
+		<key>vjezba4.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>5</integer>
+		</dict>
 		<key>zad124-izracun_reflektiranog_vektora.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -32,6 +37,11 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>3F2F37C118F40B070076902B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>3F55AD2418D38471006B46FF</key>
 		<dict>
 			<key>primary</key>
