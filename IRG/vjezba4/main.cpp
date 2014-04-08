@@ -49,7 +49,7 @@ int main(int argc, char * argv[])
     glutInitDisplayMode(GLUT_DOUBLE);
     glutInitWindowSize(sirina, visina);
     glutInitWindowPosition(200, 200);
-    glutCreateWindow("Vjezba 3");
+    glutCreateWindow("Vjezba 4");
     glutDisplayFunc(display);
     glutReshapeFunc(reshape);
     glutMouseFunc(mousePressedOrReleased);
@@ -60,7 +60,11 @@ int main(int argc, char * argv[])
 }
 
 void display() {
-    glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
+    if(konveksnost) {
+        glClearColor(0.0f, 1.0f, 0.0f, 1.0f);
+    } else {
+        glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
+    }
     glClear(GL_COLOR_BUFFER_BIT);
     glLoadIdentity();
     // crtanje scene:
@@ -93,11 +97,6 @@ void renderScene() {
         glEnd();
     }
     
-//    if(odsijecanje) {
-//        nacrtajPravokutnik();
-//    }
-//    nacrtajPostojeceLinije();
-//    nacrtajNovuLiniju();
 }
 
 void mousePressedOrReleased(int button, int state, int x, int y) {
@@ -105,26 +104,12 @@ void mousePressedOrReleased(int button, int state, int x, int y) {
         if(konveksnost) {
             // prvo provjeri jel tocka stvara konkavni poligon
         } else {
-            std::cout << "Unio tocku na (" << x << "," << y << ")" << std::endl;
+            std::cout << "Tocka: OK (" << x << "," << y << ")" << std::endl;
             iPolyElem elem;
             elem.Vrh.x = x;
             elem.Vrh.y = y;
             poligon.push_back(elem);
         }
-//        if(unosPrveTocke) {
-//            prva.first = x;
-//            prva.second = y;
-//            unosPrveTocke = false;
-//        } else {
-//            druga.first = x;
-//            druga.second = y;
-//            
-//            Linija linija;
-//            linija.poc = prva;
-//            linija.kraj = druga;
-//            linije.push_back(linija);
-//            unosPrveTocke = true;
-//        }
         glutPostRedisplay();
     }
 }
