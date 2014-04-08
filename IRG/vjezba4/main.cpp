@@ -17,13 +17,6 @@ int misX = 0, misY = 0;
 bool konveksnost = false, popunjavanje = false;
 int stanje = 1;
 
-void reshape(int, int);
-void display();
-void renderScene();
-void mousePressedOrReleased(int, int, int, int);
-void mouseMoved(int, int);
-void keyPressed(unsigned char, int, int);
-
 typedef struct {
     int x;
     int y;
@@ -40,8 +33,16 @@ typedef struct {
     iBrid2D Brid;
     int lijevi;
 } iPolyElem;
-
 std::vector<iPolyElem> poligon;
+
+void reshape(int, int);
+void display();
+void renderScene();
+void mousePressedOrReleased(int, int, int, int);
+void mouseMoved(int, int);
+void keyPressed(unsigned char, int, int);
+void RacunajKoefPoligonKonv(std::vector<iPolyElem>);
+void PopuniPoligonKonv(std::vector<iPolyElem>);
 
 int main(int argc, char * argv[])
 {
@@ -86,15 +87,27 @@ void reshape(int width, int height) {
 void renderScene() {
     glPointSize(1.0f);
     
-    if((int)poligon.size() > 0) {
-        // obrub poligona - crn
-        glColor3f(0.0f, 0.0f, 0.0f);
-        glBegin(GL_LINE_LOOP);
-        for(int i = 0; i < (int)poligon.size(); ++i) {
-            glVertex2i(poligon[i].Vrh.x, poligon[i].Vrh.y);
+    if(stanje == 1) {
+        if(!popunjavanje && (int)poligon.size() > 0) {
+            // obrub poligona - crn
+            glColor3f(0.0f, 0.0f, 0.0f);
+            glBegin(GL_LINE_LOOP);
+            for(int i = 0; i < (int)poligon.size(); ++i) {
+                glVertex2i(poligon[i].Vrh.x, poligon[i].Vrh.y);
+            }
+            glVertex2i(misX, misY);
+            glEnd();
         }
-        glVertex2i(misX, misY);
-        glEnd();
+        if(popunjavanje && (int) poligon.size() >= 2) {
+            // dodaje vrh odredjen pokazivacem i onda popunjava poligon
+            std::vector<iPolyElem> zaPopunjavanje = poligon;
+            iPolyElem elem;
+            elem.Vrh.x = misX;
+            elem.Vrh.y = misY;
+            zaPopunjavanje.push_back(elem);
+            RacunajKoefPoligonKonv(zaPopunjavanje);
+            PopuniPoligonKonv(zaPopunjavanje);
+        }
     }
     
 }
@@ -145,5 +158,69 @@ void mouseMoved(int x, int y) {
     glutPostRedisplay();
 }
 
+void RacunajKoefPoligonKonv(std::vector<iPolyElem> poligon) {
+    int i0 = (int)poligon.size() - 1;
+    
+    for(int i = 0; i < (int)poligon.size(); ++i) {
+        poligon[i0].Brid.a = poligon[i0].Vrh.y - poligon[i].Vrh.y;
+        poligon[i0].Brid.b = -(poligon[i0].Vrh.x - poligon[i].Vrh.x);
+        poligon[i0].Brid.c = poligon[i0].Vrh.x * poligon[i].Vrh.y - poligon[i0].Vrh.y * poligon[i].Vrh.x;
+        poligon[i0].lijevi = poligon[i0].Vrh.y < poligon[i].Vrh.y;
+        
+        i0 = i;
+    }
+}
 
+void PopuniPoligonKonv(std::vector<iPolyElem> poligon) {
+    std::cout << "bok" << std::endl;
+    int i, i0, y;
+    int xmin, xmax, ymin, ymax;
+    double L,D,x;
+    
+    xmin = xmax = poligon[0].Vrh.x;
+    ymin = ymax = poligon[0].Vrh.y;
+    
+    for(i = 1; i < (int)poligon.size(); ++i) {
+        if(xmin > poligon[i].Vrh.x) xmin = poligon[i].Vrh.x;
+        if(xmax < poligon[i].Vrh.x) xmax = poligon[i].Vrh.x;
+        if(ymin > poligon[i].Vrh.y) ymin = poligon[i].Vrh.y;
+        if(ymax < poligon[i].Vrh.y) ymax = poligon[i].Vrh.y;
+    }
+    
+    for(y = ymin; y <= ymax; ++y) {
+        L = xmin; D = xmax;
+        i0 = (int)poligon.size() - 1;
+        for(i = 0; i < (int)poligon.size(); i0=i++) {
+            if(poligon[i0].Brid.a == 0) {
+                if(poligon[i0].Vrh.y == y) {
+                    if(poligon[i0].Vrh.x < poligon[i].Vrh.x) {
+                        L = poligon[i0].Vrh.x;
+                        D = poligon[i].Vrh.x;
+                    } else {
+                        L = poligon[i].Vrh.x;
+                        D = poligon[i0].Vrh.x;
+                    }
+                    break;
+                }
+            } else {
+                x = (-poligon[i0].Brid.b * y - poligon[i0].Brid.c)/(double)poligon[i0].Brid.a;
+                std::cout << poligon[i0].Brid.c << std::endl;
+                if(!poligon[i0].lijevi) {
+                    if(L < x) L = x;
+                } else {
+                    if(D > x) D = x;
+                }
+            }
+        }
+        
+        
+        glBegin(GL_LINES);
+        glColor3f(0.0f, 0.0f, 0.0f);
+        std::cout << "L = " << L << ", D = " << D << std::endl;
+        glVertex2i((int)L, y);
+        glVertex2i((int)D, y);
+        glEnd();
+    }
+    
+}
 
