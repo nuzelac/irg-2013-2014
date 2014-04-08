@@ -44,6 +44,7 @@ void keyPressed(unsigned char, int, int);
 void RacunajKoefPoligonKonv(std::vector<iPolyElem>&);
 void PopuniPoligonKonv(std::vector<iPolyElem>&, int);
 void ProvjeriPoligonKonv(std::vector<iPolyElem>&, int*, int*);
+int ProvjeriTockaPozicija(std::vector<iPolyElem>&, int, int, int);
 
 int main(int argc, char * argv[])
 {
@@ -158,7 +159,11 @@ void mousePressedOrReleased(int button, int state, int x, int y) {
             }
             glutPostRedisplay();
         } else if(stanje == 2) {
-            
+            int konv, orij;
+            RacunajKoefPoligonKonv(poligon);
+            ProvjeriPoligonKonv(poligon, &konv, &orij);
+            int tockaPozicija = ProvjeriTockaPozicija(poligon, orij, x, y);
+            printf("%d\n", tockaPozicija);
         }
     }
 }
@@ -297,4 +302,37 @@ void ProvjeriPoligonKonv(std::vector<iPolyElem> &poligon, int *konv, int *orij) 
     } else if (iznad == 0) {
         *konv = 1; *orij = 1;
     }
+}
+
+int ProvjeriTockaPozicija(std::vector<iPolyElem> &poligon, int orij, int x, int y) {
+    int i, i0, r;
+    int iznad, ispod, na;
+    
+    ispod = iznad = na = 0;
+    i0 = (int)poligon.size()-2;
+    
+    for(i = 0; i < (int)poligon.size(); i++,i0++) {
+        if(i0 >= (int)poligon.size()) i0 = 0;
+        r = poligon[i0].Brid.a * x + poligon[i0].Brid.b * y + poligon[i0].Brid.c;
+        if(r == 0) ++na;
+        else if(r > 0) iznad++;
+        else ispod++;
+    }
+    
+    if(na > 0) {
+        return 1;
+    } else if(orij) {
+        if(iznad == 0) return 0;
+    } else {
+        if(ispod == 0) return 0;
+    }
+    
+    return -1;
+//    
+//    *konv = 0; *orij = 0;
+//    if(ispod == 0) {
+//        *konv = 1;
+//    } else if (iznad == 0) {
+//        *konv = 1; *orij = 1;
+//    }
 }
