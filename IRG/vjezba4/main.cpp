@@ -168,7 +168,7 @@ void mousePressedOrReleased(int button, int state, int x, int y) {
             } else if(tockaPozicija == -1) {
                 printf("Tocka (%d, %d) je izvan poligona\n", x, y);
             } else {
-                printf("TOcka (%d, %d) je na poligonu\n", x, y);
+                printf("Tocka (%d, %d) je na poligonu\n", x, y);
             }
 //            printf("%d\n", tockaPozicija);
         }
