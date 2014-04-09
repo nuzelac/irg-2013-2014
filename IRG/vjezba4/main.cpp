@@ -139,7 +139,7 @@ void mousePressedOrReleased(int button, int state, int x, int y) {
                 zaPopunjavanje.push_back(elem);
                 RacunajKoefPoligonKonv(zaPopunjavanje);
                 ProvjeriPoligonKonv(zaPopunjavanje, &konv, &orij);
-                printf("%d\n", konv);
+//                printf("%d\n", konv);
                 if(konv == 0) {
                     printf("Ne moze se dodati tocka (%d, %d) jer bi poligon postao konkavan!\n", x, y);
                 } else {
@@ -163,7 +163,14 @@ void mousePressedOrReleased(int button, int state, int x, int y) {
             RacunajKoefPoligonKonv(poligon);
             ProvjeriPoligonKonv(poligon, &konv, &orij);
             int tockaPozicija = ProvjeriTockaPozicija(poligon, orij, x, y);
-            printf("%d\n", tockaPozicija);
+            if(tockaPozicija == 0) {
+                printf("Tocka (%d, %d) je unutar poligona\n", x, y);
+            } else if(tockaPozicija == -1) {
+                printf("Tocka (%d, %d) je izvan poligona\n", x, y);
+            } else {
+                printf("TOcka (%d, %d) je na poligonu\n", x, y);
+            }
+//            printf("%d\n", tockaPozicija);
         }
     }
 }
@@ -208,19 +215,19 @@ void RacunajKoefPoligonKonv(std::vector<iPolyElem> &poligon) {
         poligon[i0].Brid.c = poligon[i0].Vrh.x * poligon[i].Vrh.y - poligon[i0].Vrh.y * poligon[i].Vrh.x;
 //        printf("a: %d b: %d c: %d\n", poligon[i0].Brid.a, poligon[i0].Brid.b, poligon[i0].Brid.c);
         poligon[i0].lijevi = poligon[i0].Vrh.y > poligon[i].Vrh.y;
-        std::cout << "LIJEVI: " <<  poligon[i0].lijevi << std::endl;
+//        std::cout << "LIJEVI: " <<  poligon[i0].lijevi << std::endl;
         
         i0 = i;
     }
     
-    for(int i = 0; i < (int)poligon.size(); ++i) {
-        std::cout << poligon[i].Vrh.x << " " << poligon[i].Vrh.y << " "<< poligon[i].lijevi << std::endl;
-    }
+//    for(int i = 0; i < (int)poligon.size(); ++i) {
+//        std::cout << poligon[i].Vrh.x << " " << poligon[i].Vrh.y << " "<< poligon[i].lijevi << std::endl;
+//    }
     
 }
 
 void PopuniPoligonKonv(std::vector<iPolyElem> &poligon, int orij) {
-    std::cout << "bok" << std::endl;
+//    std::cout << "bok" << std::endl;
     int i, i0, y;
     int xmin, xmax, ymin, ymax;
     double L,D,x;
@@ -257,8 +264,8 @@ void PopuniPoligonKonv(std::vector<iPolyElem> &poligon, int orij) {
                 }
             } else {
                 x = (-poligon[i0].Brid.b * y - poligon[i0].Brid.c)/(double)poligon[i0].Brid.a;
-                printf("abc %d: %d %d %d\n", i0, poligon[i0].Brid.a, poligon[i0].Brid.b, poligon[i0].Brid.c);
-                printf("%lf\n", x);
+//                printf("abc %d: %d %d %d\n", i0, poligon[i0].Brid.a, poligon[i0].Brid.b, poligon[i0].Brid.c);
+//                printf("%lf\n", x);
 //                std::cout << poligon[i0].Brid.c << std::endl;
 //                std::cout << poligon[i0].Vrh.x << " " << poligon[i0].Vrh.y << " "<< poligon[i0].lijevi << std::endl;
 
@@ -273,7 +280,7 @@ void PopuniPoligonKonv(std::vector<iPolyElem> &poligon, int orij) {
         
         glBegin(GL_LINES);
         glColor3f(0.0f, 0.0f, 0.0f);
-        std::cout << "L = " << L << ", D = " << D << std::endl;
+//        std::cout << "L = " << L << ", D = " << D << std::endl;
         glVertex2i((int)L, y);
         glVertex2i((int)D, y);
         glEnd();
