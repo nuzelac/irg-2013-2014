@@ -102,7 +102,7 @@ void renderScene() {
             glEnd();
         }
         if(popunjavanje && (int)poligon.size() >= 2) {
-            std::cout << "BOK";
+//            std::cout << "BOK";
             // dodaje vrh odredjen pokazivacem i onda popunjava poligon
             std::vector<iPolyElem> zaPopunjavanje = poligon;
             iPolyElem elem;

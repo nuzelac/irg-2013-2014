@@ -34,6 +34,21 @@
 			<key>orderHint</key>
 			<integer>6</integer>
 		</dict>
+		<key>vjezba5poligon.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>7</integer>
+		</dict>
+		<key>vjezba5tijela.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>8</integer>
+		</dict>
+		<key>vjezba6.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>9</integer>
+		</dict>
 		<key>zad124-izracun_reflektiranog_vektora.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -52,7 +67,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>3F47FF1F192F87FE0041F095</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>3F55AD2418D38471006B46FF</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>3FB6BB35192EB81100A8ED03</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>3FD5C9D7192EAD8E00D3C616</key>
 		<dict>
 			<key>primary</key>
 			<true/>
