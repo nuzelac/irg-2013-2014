@@ -35,6 +35,16 @@
 		3F4805AD193DFBC900D327BC /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FDF0C6918E32ED000665329 /* OpenGL.framework */; };
 		3F4805B5193DFFD200D327BC /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3F4805B4193DFFD200D327BC /* main.cpp */; };
 		3F4805B7193DFFD200D327BC /* vjezba7.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3F4805B6193DFFD200D327BC /* vjezba7.1 */; };
+		3F4805BB193E146400D327BC /* IVector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3F55AD3118D3856D006B46FF /* IVector.cpp */; };
+		3F4805BC193E146400D327BC /* AbstractVector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3F55AD3418D38895006B46FF /* AbstractVector.cpp */; };
+		3F4805BD193E146400D327BC /* IMatrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3F55AD3718D38AD5006B46FF /* IMatrix.cpp */; };
+		3F4805BE193E146400D327BC /* Vector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3F34A3AB18D5FCD100FE9A96 /* Vector.cpp */; };
+		3F4805BF193E146400D327BC /* AbstractMatrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3F34A3B218D6289200FE9A96 /* AbstractMatrix.cpp */; };
+		3F4805C0193E146400D327BC /* MatrixTransposeView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3F90C54018D646C900983B1D /* MatrixTransposeView.cpp */; };
+		3F4805C1193E146400D327BC /* MatrixSubMatrixView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3F90C54318D646DC00983B1D /* MatrixSubMatrixView.cpp */; };
+		3F4805C2193E146400D327BC /* Matrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3FF40A9318D703BF00F9D114 /* Matrix.cpp */; };
+		3F4805C3193E146400D327BC /* MatrixVectorView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3FF40A9618D718FC00F9D114 /* MatrixVectorView.cpp */; };
+		3F4805C4193E146400D327BC /* VectorMatrixView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3FF40A9918D726B700F9D114 /* VectorMatrixView.cpp */; };
 		3F55AD2918D38471006B46FF /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3F55AD2818D38471006B46FF /* main.cpp */; };
 		3F55AD2B18D38471006B46FF /* IRG.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3F55AD2A18D38471006B46FF /* IRG.1 */; };
 		3F55AD3318D3856D006B46FF /* IVector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3F55AD3118D3856D006B46FF /* IVector.cpp */; };
@@ -277,6 +287,7 @@
 		3F4805B2193DFFD200D327BC /* vjezba7 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = vjezba7; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F4805B4193DFFD200D327BC /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		3F4805B6193DFFD200D327BC /* vjezba7.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = vjezba7.1; sourceTree = "<group>"; };
+		3F4805C5193E14C300D327BC /* objekti */ = {isa = PBXFileReference; lastKnownFileType = folder; path = objekti; sourceTree = "<group>"; };
 		3F55AD2518D38471006B46FF /* IRG */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = IRG; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F55AD2818D38471006B46FF /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		3F55AD2A18D38471006B46FF /* IRG.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = IRG.1; sourceTree = "<group>"; };
@@ -514,6 +525,7 @@
 		3F4805B3193DFFD200D327BC /* vjezba7 */ = {
 			isa = PBXGroup;
 			children = (
+				3F4805C5193E14C300D327BC /* objekti */,
 				3F4805B4193DFFD200D327BC /* main.cpp */,
 				3F4805B6193DFFD200D327BC /* vjezba7.1 */,
 			);
@@ -967,7 +979,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F4805C0193E146400D327BC /* MatrixTransposeView.cpp in Sources */,
+				3F4805BB193E146400D327BC /* IVector.cpp in Sources */,
+				3F4805BC193E146400D327BC /* AbstractVector.cpp in Sources */,
+				3F4805C2193E146400D327BC /* Matrix.cpp in Sources */,
+				3F4805C4193E146400D327BC /* VectorMatrixView.cpp in Sources */,
+				3F4805BF193E146400D327BC /* AbstractMatrix.cpp in Sources */,
+				3F4805BE193E146400D327BC /* Vector.cpp in Sources */,
+				3F4805C3193E146400D327BC /* MatrixVectorView.cpp in Sources */,
+				3F4805BD193E146400D327BC /* IMatrix.cpp in Sources */,
 				3F4805B5193DFFD200D327BC /* main.cpp in Sources */,
+				3F4805C1193E146400D327BC /* MatrixSubMatrixView.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
