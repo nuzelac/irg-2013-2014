@@ -57,6 +57,8 @@ void redisplay_all	(void);
 
 struct Vertex3D {
     double x, y, z;
+    
+    IVector *normala;
 };
 
 struct Face3D {
@@ -162,14 +164,38 @@ public:
         }
     }
     
-    void izracunajNormale() {
+    void izracunajNormalePoligona() {
         for(int i = 0; i < (int)faces.size(); ++i) {
             faces[i].normala = (new Vector(new double[3]{faces[i].a, faces[i].b, faces[i].c }, 3))->normalize();
 //            printf("%s\n", faces[i].normala->toString().c_str());
             //printf("%lf %lf %lf\n", srediste.x, srediste.y, srediste.z);
         }
-        
     }
+    
+    void izracunajNormaleVrhova() {
+        for(int i = 0; i < (int)vertices.size(); ++i) {
+            std::vector<IVector *> normalePoligona;
+            for(int j = 0; j < (int)faces.size(); ++j) {
+                if(faces[j].indexes[0] == i || faces[j].indexes[1] == i || faces[j].indexes[2] == i) {
+                    normalePoligona.push_back(faces[j].normala);
+                }
+            }
+            
+            IVector *normala = new Vector(new double[3]{0, 0, 0}, 3);
+            for(int j = 0; j < (int)normalePoligona.size(); ++j) {
+                for(int z = 0; z < 3; ++z) {
+                    normala->set(z, normala->get(z) + normalePoligona[j]->get(z));
+                }
+            }
+            for(int z = 0; z < 3; ++z) {
+                normala->set(z, normala->get(z) / normalePoligona.size());
+            }
+            normala->normalize();
+
+            vertices[i].normala = normala;
+        }
+    }
+    
 };
 
 ObjectModel *obj;
@@ -218,7 +244,8 @@ int main(int argc, char * argv[])
     obj->normalize();
     obj->izracunajKoeficijente();
     obj->izracunajSredista();
-    obj->izracunajNormale();
+    obj->izracunajNormalePoligona();
+    obj->izracunajNormaleVrhova();
 //    printf("dump:\n");
 //    printf("%s\n", obj.dumpToOBJ().c_str());
     
@@ -294,8 +321,8 @@ void updatePerspective()
 void myObject ()
 {
 //    zicnaForma();
-    konstantnoSjencanje();
-//    GouraudovoSjencanje();
+//    konstantnoSjencanje();
+    GouraudovoSjencanje();
 }
 
 void zicnaForma() {
@@ -326,7 +353,28 @@ void konstantnoSjencanje() {
 }
 
 void GouraudovoSjencanje() {
-    
+    for(int i = 0; i < (int)obj->faces.size(); ++i) {
+        if(!obj->faces[i].isVisible()) continue;
+        
+        IVector *L0 = (new Vector(new double[3]{izvor.x - obj->vertices[obj->faces[i].indexes[0]].x, izvor.y - obj->vertices[obj->faces[i].indexes[0]].y, izvor.z - obj->vertices[obj->faces[i].indexes[0]].z}, 3))->normalize();
+        double I0 = Ia * ka + Ii * kd * L0->scalarProduct(obj->vertices[obj->faces[i].indexes[0]].normala);
+        if(I0 < 0) I0 = 0;
+
+        IVector *L1 = (new Vector(new double[3]{izvor.x - obj->vertices[obj->faces[i].indexes[1]].x, izvor.y - obj->vertices[obj->faces[i].indexes[1]].y, izvor.z - obj->vertices[obj->faces[i].indexes[1]].z}, 3))->normalize();
+        double I1 = Ia * ka + Ii * kd * L1->scalarProduct(obj->vertices[obj->faces[i].indexes[1]].normala);
+        if(I1 < 0) I1 = 0;
+
+        IVector *L2 = (new Vector(new double[3]{izvor.x - obj->vertices[obj->faces[i].indexes[2]].x, izvor.y - obj->vertices[obj->faces[i].indexes[2]].y, izvor.z - obj->vertices[obj->faces[i].indexes[2]].z}, 3))->normalize();
+        double I2 = Ia * ka + Ii * kd * L2->scalarProduct(obj->vertices[obj->faces[i].indexes[2]].normala);
+        if(I2 < 0) I2 = 0;
+
+
+        glBegin (GL_TRIANGLES);
+        glColor3ub(I0, 0, 0);	glVertex3f(obj->vertices[obj->faces[i].indexes[0]].x, obj->vertices[obj->faces[i].indexes[0]].y, obj->vertices[obj->faces[i].indexes[0]].z);
+        glColor3ub(I1, 0, 0);	glVertex3f(obj->vertices[obj->faces[i].indexes[1]].x, obj->vertices[obj->faces[i].indexes[1]].y, obj->vertices[obj->faces[i].indexes[1]].z);
+        glColor3ub(I2, 0, 0);	glVertex3f(obj->vertices[obj->faces[i].indexes[2]].x, obj->vertices[obj->faces[i].indexes[2]].y, obj->vertices[obj->faces[i].indexes[2]].z);
+        glEnd();
+    }
 }
 
 
