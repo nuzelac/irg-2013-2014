@@ -27,8 +27,14 @@ typedef struct _Ociste {
 	GLdouble	z;
 } Ociste;
 
+typedef struct Izvor {
+	GLdouble	x;
+	GLdouble	y;
+	GLdouble	z;
+} Izvor;
 
-Ociste	ociste = {3.0, 3.0 ,5.0};
+Ociste ociste = {3.0, 3.0 ,5.0};
+Izvor izvor = {-2.0, 5.0, 2.0};
 
 //*********************************************************************************
 //	Function Prototypes.
@@ -39,6 +45,9 @@ void myReshape		(int width, int height);
 void myMouse		(int button, int state, int x, int y);
 void myKeyboard		(unsigned char theKey, int mouseX, int mouseY);
 void myObject		();
+void zicnaForma     ();
+void konstantnoSjencanje();
+void GouraudovoSjencanje();
 void redisplay_all	(void);
 
 struct Vertex3D {
@@ -53,6 +62,9 @@ struct Face3D {
         double p = a * ociste.x + b * ociste.y + c * ociste.z + d;
         return p > 0;
     }
+    
+    Vertex3D srediste;
+    IVector *normala;
 };
 
 class ObjectModel {
@@ -116,8 +128,42 @@ public:
             faces[i].b = n->get(1);
             faces[i].c = n->get(2);
             faces[i].d = -faces[i].a * vertices[i1].x - faces[i].b * vertices[i1].y - faces[i].c * vertices[i1].z;
-            printf("%lf %lf %lf %lf\n", faces[i].a, faces[i].b, faces[i].c, faces[i].d);
+//            printf("%lf %lf %lf %lf\n", faces[i].a, faces[i].b, faces[i].c, faces[i].d);
         }
+    }
+    
+    void izracunajSredista() {
+        for(int i = 0; i < (int)faces.size(); ++i) {
+            int i0 = faces[i].indexes[0];
+            int i1 = faces[i].indexes[1];
+            int i2 = faces[i].indexes[2];
+            
+            double xmin = std::min(vertices[i0].x, std::min(vertices[i1].x, vertices[i2].x));
+            double xmax = std::max(vertices[i0].x, std::max(vertices[i1].x, vertices[i2].x));
+
+            double ymin = std::min(vertices[i0].y, std::min(vertices[i1].y, vertices[i2].y));
+            double ymax = std::max(vertices[i0].y, std::max(vertices[i1].y, vertices[i2].y));
+
+            double zmin = std::min(vertices[i0].z, std::min(vertices[i1].z, vertices[i2].z));
+            double zmax = std::max(vertices[i0].z, std::max(vertices[i1].z, vertices[i2].z));
+            
+            Vertex3D srediste;
+            srediste.x = (xmax+xmin)/2.0;
+            srediste.y = (ymax+ymin)/2.0;
+            srediste.z = (zmax+zmin)/2.0;
+            faces[i].srediste = srediste;
+            
+//            printf("%lf %lf %lf\n", srediste.x, srediste.y, srediste.z);
+        }
+    }
+    
+    void izracunajNormale() {
+        for(int i = 0; i < (int)faces.size(); ++i) {
+            faces[i].normala = (new Vector(new double[3]{faces[i].a, faces[i].b, faces[i].c }, 3))->normalize();
+//            printf("%s\n", faces[i].normala->toString().c_str());
+            //printf("%lf %lf %lf\n", srediste.x, srediste.y, srediste.z);
+        }
+        
     }
 };
 
@@ -166,6 +212,8 @@ int main(int argc, char * argv[])
     obj = new ObjectModel(vertices, faces);
     obj->normalize();
     obj->izracunajKoeficijente();
+    obj->izracunajSredista();
+    obj->izracunajNormale();
 //    printf("dump:\n");
 //    printf("%s\n", obj.dumpToOBJ().c_str());
     
@@ -200,7 +248,7 @@ void myDisplay(void)
 	// printf("Pozvan myDisplay()\n");
 	glClearColor( 1.0f, 1.0f, 1.0f, 1.0f);		         // boja pozadine - bijela
 	glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	myObject(); // obicna zicna forma
+	myObject();
 	glutSwapBuffers();      // iscrtavanje iz dvostrukog spemnika (umjesto glFlush)
 }
 
@@ -238,21 +286,30 @@ void updatePerspective()
 
 void myObject ()
 {
-    //	glutWireCube (1.0);
-    //	glutSolidCube (1.0);
-    //	glutWireTeapot (1.0);
-    //	glutSolidTeapot (1.0);
-	
+    zicnaForma();
+//    konstantnoSjencanje();
+//    GouraudovoSjencanje();
+}
+
+void zicnaForma() {
     for(int i = 0; i < (int)obj->faces.size(); ++i) {
         if(!obj->faces[i].isVisible()) continue;
-        glBegin (GL_LINE_LOOP); // ili glBegin (GL_LINE_LOOP); za zicnu formu
+        glBegin (GL_LINE_LOOP);
         glColor3ub(255, 0, 0);	glVertex3f(obj->vertices[obj->faces[i].indexes[0]].x, obj->vertices[obj->faces[i].indexes[0]].y, obj->vertices[obj->faces[i].indexes[0]].z);
         glColor3ub(0, 0, 0);	glVertex3f(obj->vertices[obj->faces[i].indexes[1]].x, obj->vertices[obj->faces[i].indexes[1]].y, obj->vertices[obj->faces[i].indexes[1]].z);
         glColor3ub(100, 0, 0);	glVertex3f(obj->vertices[obj->faces[i].indexes[2]].x, obj->vertices[obj->faces[i].indexes[2]].y, obj->vertices[obj->faces[i].indexes[2]].z);
         glEnd();
     }
+}
+
+void konstantnoSjencanje() {
     
 }
+
+void GouraudovoSjencanje() {
+    
+}
+
 
 //*********************************************************************************
 //	Mis.
