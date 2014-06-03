@@ -45,6 +45,8 @@
 		3F4805C2193E146400D327BC /* Matrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3FF40A9318D703BF00F9D114 /* Matrix.cpp */; };
 		3F4805C3193E146400D327BC /* MatrixVectorView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3FF40A9618D718FC00F9D114 /* MatrixVectorView.cpp */; };
 		3F4805C4193E146400D327BC /* VectorMatrixView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3FF40A9918D726B700F9D114 /* VectorMatrixView.cpp */; };
+		3F4805C6193E1F2B00D327BC /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FDF0C6818E32ED000665329 /* GLUT.framework */; };
+		3F4805C7193E1F2B00D327BC /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FDF0C6918E32ED000665329 /* OpenGL.framework */; };
 		3F55AD2918D38471006B46FF /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3F55AD2818D38471006B46FF /* main.cpp */; };
 		3F55AD2B18D38471006B46FF /* IRG.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3F55AD2A18D38471006B46FF /* IRG.1 */; };
 		3F55AD3318D3856D006B46FF /* IVector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3F55AD3118D3856D006B46FF /* IVector.cpp */; };
@@ -376,6 +378,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F4805C6193E1F2B00D327BC /* GLUT.framework in Frameworks */,
+				3F4805C7193E1F2B00D327BC /* OpenGL.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

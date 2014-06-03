@@ -10,6 +10,36 @@
 #include <vector>
 #include "Vector.h"
 #include <algorithm>
+#include <OpenGL/gl.h>
+#include <OpenGL/glu.h>
+#include <GLUT/glut.h>
+
+//*********************************************************************************
+//	Pokazivac na glavni prozor i pocetna velicina.
+//*********************************************************************************
+
+GLuint window;
+GLuint width = 300, height = 300;
+
+typedef struct _Ociste {
+	GLdouble	x;
+	GLdouble	y;
+	GLdouble	z;
+} Ociste;
+
+
+Ociste	ociste = {3.0, 3.0 ,5.0};
+
+//*********************************************************************************
+//	Function Prototypes.
+//*********************************************************************************
+
+void myDisplay		();
+void myReshape		(int width, int height);
+void myMouse		(int button, int state, int x, int y);
+void myKeyboard		(unsigned char theKey, int mouseX, int mouseY);
+void myObject		();
+void redisplay_all	(void);
 
 struct Vertex3D {
     double x, y, z;
@@ -18,6 +48,11 @@ struct Vertex3D {
 struct Face3D {
     int indexes[3];
     double a, b, c, d;
+    
+    bool isVisible() {
+        double p = a * ociste.x + b * ociste.y + c * ociste.z + d;
+        return p > 0;
+    }
 };
 
 class ObjectModel {
@@ -81,10 +116,12 @@ public:
             faces[i].b = n->get(1);
             faces[i].c = n->get(2);
             faces[i].d = -faces[i].a * vertices[i1].x - faces[i].b * vertices[i1].y - faces[i].c * vertices[i1].z;
+            printf("%lf %lf %lf %lf\n", faces[i].a, faces[i].b, faces[i].c, faces[i].d);
         }
     }
 };
 
+ObjectModel *obj;
 
 int main(int argc, char * argv[])
 {
@@ -93,7 +130,7 @@ int main(int argc, char * argv[])
     //        return -1;
     //    }
     
-    char *objFilename = "/Users/Nino/Programming/irg/IRG/vjezba5/kocka.obj";
+    char *objFilename = "/Users/Nino/Programming/irg/IRG/vjezba7/objekti/concave/teddy.obj";
     
     FILE *f = fopen(objFilename, "r");
     if(f == NULL) {
@@ -126,43 +163,133 @@ int main(int argc, char * argv[])
         }
     }
     
-    ObjectModel obj(vertices, faces);
-    obj.normalize();
-    obj.izracunajKoeficijente();
-    printf("dump:\n");
-    printf("%s\n", obj.dumpToOBJ().c_str());
+    obj = new ObjectModel(vertices, faces);
+    obj->normalize();
+    obj->izracunajKoeficijente();
+//    printf("dump:\n");
+//    printf("%s\n", obj.dumpToOBJ().c_str());
     
-//    printf("Upiti:\n");
-//    while(scanf("%s", tip) == 1) {
-//        std::string s = tip;
-//        if(s == "normiraj") {
-//            obj.normalize();
-//            printf("Normirani model:\n\n%s\n", obj.dumpToOBJ().c_str());
-//        } else if(s == "t"){
-//            double x,y,z;
-//            scanf("%lf %lf %lf", &x, &y, &z);
-//            int iznad = 0, ispod = 0, na = 0;
-//            for(int i = 0; i < (int)obj.faces.size(); ++i) {
-//                Face3D f = obj.faces[i];
-//                double r = x * f.a + y * f.b + z * f.c + f.d;
-//                if(fabs(r) < 1e-8) ++na;
-//                if(r > 0) ++iznad;
-//                if(r < 0) ++ispod;
-//            }
-//            
-//            if(iznad > 0) {
-//                printf("Tocka T(%lf, %lf, %lf) je izvan tijela\n", x, y, z);
-//            } else if(na > 0) {
-//                printf("Tocka T(%lf, %lf, %lf) je na tijelu\n", x, y, z);
-//            } else {
-//                printf("Tocka T(%lf, %lf, %lf) je unutar tijela\n", x, y, z);
-//            }
-//        } else if(s == "quit") {
-//            printf("Kraj\n");
-//            break;
-//        }
-//    }
+    
+	// postavljanje dvostrukog spremnika za prikaz (zbog titranja)
+	glutInitDisplayMode (GLUT_RGB | GLUT_DOUBLE);
+	glutInitWindowSize (width, height);
+	glutInitWindowPosition (100, 100);
+	glutInit(&argc, argv);
+    
+	window = glutCreateWindow ("Tijelo");
+	glutReshapeFunc(myReshape);
+	glutDisplayFunc(myDisplay);
+	glutMouseFunc(myMouse);
+	glutKeyboardFunc(myKeyboard);
+	printf("Tipka: l - pomicanje ocista po x os +\n");
+	printf("Tipka: k - pomicanje ocista po x os -\n");
+	printf("Tipka: r - pocetno stanje\n");
+	printf("esc: izlaz iz programa\n");
+    
+	glutMainLoop();
     
     return 0;
+}
+
+//*********************************************************************************
+//	Osvjezavanje prikaza.
+//*********************************************************************************
+
+void myDisplay(void)
+{
+	// printf("Pozvan myDisplay()\n");
+	glClearColor( 1.0f, 1.0f, 1.0f, 1.0f);		         // boja pozadine - bijela
+	glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	myObject(); // obicna zicna forma
+	glutSwapBuffers();      // iscrtavanje iz dvostrukog spemnika (umjesto glFlush)
+}
+
+//*********************************************************************************
+//	Promjena velicine prozora.
+//	Funkcija gluPerspective i gluLookAt se obavlja
+//		transformacija pogleda i projekcija
+//*********************************************************************************
+
+void myReshape (int w, int h)
+{
+	// printf("MR: width=%d, height=%d\n",w,h);
+	width=w; height=h;
+	glViewport (0, 0, width, height);
+	glEnable(GL_DEPTH_TEST);
+	glMatrixMode (GL_PROJECTION);        // aktivirana matrica projekcije
+	glLoadIdentity ();
+	gluPerspective(45.0, (float)width/height, 0.5, 15.0); // kut pogleda, x/y, prednja i straznja ravnina odsjecanja
+	gluLookAt (ociste.x, ociste.y, ociste.z, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);	// ociste x,y,z; glediste x,y,z; up vektor x,y,z
+	glMatrixMode (GL_MODELVIEW);         // aktivirana matrica modela
+}
+
+void updatePerspective()
+{
+	glMatrixMode (GL_PROJECTION);        // aktivirana matrica projekcije
+	glLoadIdentity ();
+	gluPerspective(45.0, (float)width/height, 0.5, 15.0); // kut pogleda, x/y, prednja i straznja ravnina odsjecanja
+	gluLookAt (ociste.x, ociste.y, ociste.z, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);	// ociste x,y,z; glediste x,y,z; up vektor x,y,z
+	glMatrixMode (GL_MODELVIEW);         // aktivirana matrica modela
+}
+
+//*********************************************************************************
+//	Crta moj objekt. Ovdje treba naciniti prikaz ucitanog objekta.
+//*********************************************************************************
+
+void myObject ()
+{
+    //	glutWireCube (1.0);
+    //	glutSolidCube (1.0);
+    //	glutWireTeapot (1.0);
+    //	glutSolidTeapot (1.0);
+	
+    for(int i = 0; i < (int)obj->faces.size(); ++i) {
+        if(!obj->faces[i].isVisible()) continue;
+        glBegin (GL_LINE_LOOP); // ili glBegin (GL_LINE_LOOP); za zicnu formu
+        glColor3ub(255, 0, 0);	glVertex3f(obj->vertices[obj->faces[i].indexes[0]].x, obj->vertices[obj->faces[i].indexes[0]].y, obj->vertices[obj->faces[i].indexes[0]].z);
+        glColor3ub(0, 0, 0);	glVertex3f(obj->vertices[obj->faces[i].indexes[1]].x, obj->vertices[obj->faces[i].indexes[1]].y, obj->vertices[obj->faces[i].indexes[1]].z);
+        glColor3ub(100, 0, 0);	glVertex3f(obj->vertices[obj->faces[i].indexes[2]].x, obj->vertices[obj->faces[i].indexes[2]].y, obj->vertices[obj->faces[i].indexes[2]].z);
+        glEnd();
+    }
+    
+}
+
+//*********************************************************************************
+//	Mis.
+//*********************************************************************************
+
+void myMouse(int button, int state, int x, int y)
+{
+	//	Desna tipka - brise canvas.
+	if (button == GLUT_RIGHT_BUTTON && state == GLUT_DOWN)
+	{
+		ociste.x=0;
+		updatePerspective();
+		glutPostRedisplay();
+	}
+}
+
+//*********************************************************************************
+//	Tastatura tipke - esc - izlazi iz programa.
+//*********************************************************************************
+
+void myKeyboard(unsigned char theKey, int mouseX, int mouseY)
+{
+	switch (theKey)
+	{
+		case 'l': ociste.x = ociste.x+0.1;
+            break;
+            
+		case 'k': ociste.x =ociste.x-0.1;
+            break;
+            
+		case 'r': ociste.x=0.0;
+            break;
+            
+		case 27:  exit(0);
+            break;
+	}
+	updatePerspective();
+	glutPostRedisplay();
 }
 
