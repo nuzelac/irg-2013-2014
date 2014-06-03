@@ -36,6 +36,11 @@ typedef struct Izvor {
 Ociste ociste = {3.0, 3.0 ,5.0};
 Izvor izvor = {-2.0, 5.0, 2.0};
 
+double Ia = 100;
+double Ii = 200;
+double ka = 0.5;
+double kd = 0.5;
+
 //*********************************************************************************
 //	Function Prototypes.
 //*********************************************************************************
@@ -219,12 +224,14 @@ int main(int argc, char * argv[])
     
     
 	// postavljanje dvostrukog spremnika za prikaz (zbog titranja)
-	glutInitDisplayMode (GLUT_RGB | GLUT_DOUBLE);
+	glutInitDisplayMode (GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH);
 	glutInitWindowSize (width, height);
 	glutInitWindowPosition (100, 100);
 	glutInit(&argc, argv);
     
 	window = glutCreateWindow ("Tijelo");
+	glEnable(GL_DEPTH_TEST);
+	glDepthFunc(GL_LEQUAL);
 	glutReshapeFunc(myReshape);
 	glutDisplayFunc(myDisplay);
 	glutMouseFunc(myMouse);
@@ -286,8 +293,8 @@ void updatePerspective()
 
 void myObject ()
 {
-    zicnaForma();
-//    konstantnoSjencanje();
+//    zicnaForma();
+    konstantnoSjencanje();
 //    GouraudovoSjencanje();
 }
 
@@ -303,7 +310,19 @@ void zicnaForma() {
 }
 
 void konstantnoSjencanje() {
-    
+    for(int i = 0; i < (int)obj->faces.size(); ++i) {
+        if(!obj->faces[i].isVisible()) continue;
+        IVector *L = (new Vector(new double[3]{izvor.x - obj->faces[i].srediste.x, izvor.y - obj->faces[i].srediste.y, izvor.z - obj->faces[i].srediste.z}, 3))->normalize();
+        
+        double I = Ia * ka + Ii * kd * L->scalarProduct(obj->faces[i].normala);
+        if(I < 0) I = 0;
+        
+        glBegin (GL_TRIANGLES);
+        glColor3ub(I, 0, 0);	glVertex3f(obj->vertices[obj->faces[i].indexes[0]].x, obj->vertices[obj->faces[i].indexes[0]].y, obj->vertices[obj->faces[i].indexes[0]].z);
+        glColor3ub(I, 0, 0);	glVertex3f(obj->vertices[obj->faces[i].indexes[1]].x, obj->vertices[obj->faces[i].indexes[1]].y, obj->vertices[obj->faces[i].indexes[1]].z);
+        glColor3ub(I, 0, 0);	glVertex3f(obj->vertices[obj->faces[i].indexes[2]].x, obj->vertices[obj->faces[i].indexes[2]].y, obj->vertices[obj->faces[i].indexes[2]].z);
+        glEnd();
+    }
 }
 
 void GouraudovoSjencanje() {
