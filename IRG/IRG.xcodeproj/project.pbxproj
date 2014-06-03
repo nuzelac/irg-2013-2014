@@ -29,6 +29,10 @@
 		3F47FF25192F87FE0041F095 /* vjezba6.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3F47FF24192F87FE0041F095 /* vjezba6.1 */; };
 		3F47FF29192F88030041F095 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FDF0C6918E32ED000665329 /* OpenGL.framework */; };
 		3F47FF2A192F88050041F095 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FDF0C6818E32ED000665329 /* GLUT.framework */; };
+		3F4805A6193DFBBA00D327BC /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3F4805A5193DFBBA00D327BC /* main.cpp */; };
+		3F4805A8193DFBBA00D327BC /* vjezba8_julia.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3F4805A7193DFBBA00D327BC /* vjezba8_julia.1 */; };
+		3F4805AC193DFBC900D327BC /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FDF0C6818E32ED000665329 /* GLUT.framework */; };
+		3F4805AD193DFBC900D327BC /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FDF0C6918E32ED000665329 /* OpenGL.framework */; };
 		3F55AD2918D38471006B46FF /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3F55AD2818D38471006B46FF /* main.cpp */; };
 		3F55AD2B18D38471006B46FF /* IRG.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3F55AD2A18D38471006B46FF /* IRG.1 */; };
 		3F55AD3318D3856D006B46FF /* IVector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3F55AD3118D3856D006B46FF /* IVector.cpp */; };
@@ -133,6 +137,16 @@
 			dstSubfolderSpec = 0;
 			files = (
 				3F47FF25192F87FE0041F095 /* vjezba6.1 in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		3F4805A1193DFBBA00D327BC /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+				3F4805A8193DFBBA00D327BC /* vjezba8_julia.1 in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
@@ -245,6 +259,9 @@
 		3F47FF24192F87FE0041F095 /* vjezba6.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = vjezba6.1; sourceTree = "<group>"; };
 		3F47FF2B192F89190041F095 /* input.in */ = {isa = PBXFileReference; lastKnownFileType = text; path = input.in; sourceTree = "<group>"; };
 		3F47FF2C192F89650041F095 /* glm */ = {isa = PBXFileReference; lastKnownFileType = folder; path = glm; sourceTree = "<group>"; };
+		3F4805A3193DFBBA00D327BC /* vjezba8-julia */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "vjezba8-julia"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3F4805A5193DFBBA00D327BC /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		3F4805A7193DFBBA00D327BC /* vjezba8_julia.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = vjezba8_julia.1; sourceTree = "<group>"; };
 		3F55AD2518D38471006B46FF /* IRG */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = IRG; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F55AD2818D38471006B46FF /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		3F55AD2A18D38471006B46FF /* IRG.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = IRG.1; sourceTree = "<group>"; };
@@ -317,6 +334,15 @@
 			files = (
 				3F47FF2A192F88050041F095 /* GLUT.framework in Frameworks */,
 				3F47FF29192F88030041F095 /* OpenGL.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3F4805A0193DFBBA00D327BC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3F4805AC193DFBC900D327BC /* GLUT.framework in Frameworks */,
+				3F4805AD193DFBC900D327BC /* OpenGL.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -454,6 +480,15 @@
 			path = vjezba6;
 			sourceTree = "<group>";
 		};
+		3F4805A4193DFBBA00D327BC /* vjezba8-julia */ = {
+			isa = PBXGroup;
+			children = (
+				3F4805A5193DFBBA00D327BC /* main.cpp */,
+				3F4805A7193DFBBA00D327BC /* vjezba8_julia.1 */,
+			);
+			path = "vjezba8-julia";
+			sourceTree = "<group>";
+		};
 		3F55AD1C18D38471006B46FF = {
 			isa = PBXGroup;
 			children = (
@@ -471,6 +506,7 @@
 				3FB6BB37192EB81100A8ED03 /* vjezba5tijela */,
 				3F47FF21192F87FE0041F095 /* vjezba6 */,
 				3F9C9989193DE84200D82782 /* vjezba8-mandelbrot */,
+				3F4805A4193DFBBA00D327BC /* vjezba8-julia */,
 				3F55AD2618D38471006B46FF /* Products */,
 			);
 			sourceTree = "<group>";
@@ -490,6 +526,7 @@
 				3F47FF20192F87FE0041F095 /* vjezba6 */,
 				3F9C997B193DE03800D82782 /* vjezba8 */,
 				3F9C9988193DE84200D82782 /* vjezba8-mandelbrot */,
+				3F4805A3193DFBBA00D327BC /* vjezba8-julia */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -622,6 +659,23 @@
 			name = vjezba6;
 			productName = vjezba6;
 			productReference = 3F47FF20192F87FE0041F095 /* vjezba6 */;
+			productType = "com.apple.product-type.tool";
+		};
+		3F4805A2193DFBBA00D327BC /* vjezba8-julia */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3F4805A9193DFBBA00D327BC /* Build configuration list for PBXNativeTarget "vjezba8-julia" */;
+			buildPhases = (
+				3F48059F193DFBBA00D327BC /* Sources */,
+				3F4805A0193DFBBA00D327BC /* Frameworks */,
+				3F4805A1193DFBBA00D327BC /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "vjezba8-julia";
+			productName = "vjezba8-julia";
+			productReference = 3F4805A3193DFBBA00D327BC /* vjezba8-julia */;
 			productType = "com.apple.product-type.tool";
 		};
 		3F55AD2418D38471006B46FF /* IRG */ = {
@@ -810,6 +864,7 @@
 				3F47FF1F192F87FE0041F095 /* vjezba6 */,
 				3F9C997A193DE03800D82782 /* vjezba8 */,
 				3F9C9987193DE84200D82782 /* vjezba8-mandelbrot */,
+				3F4805A2193DFBBA00D327BC /* vjezba8-julia */,
 			);
 		};
 /* End PBXProject section */
@@ -846,6 +901,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				3F47FF23192F87FE0041F095 /* main.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3F48059F193DFBBA00D327BC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3F4805A6193DFBBA00D327BC /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1021,6 +1084,24 @@
 			name = Debug;
 		};
 		3F47FF27192F87FE0041F095 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		3F4805AA193DFBBA00D327BC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		3F4805AB193DFBBA00D327BC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1285,6 +1366,14 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		3F4805A9193DFBBA00D327BC /* Build configuration list for PBXNativeTarget "vjezba8-julia" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3F4805AA193DFBBA00D327BC /* Debug */,
+				3F4805AB193DFBBA00D327BC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		3F55AD2018D38471006B46FF /* Build configuration list for PBXProject "IRG" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1310,6 +1399,7 @@
 				3F9C9982193DE03800D82782 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3F9C998E193DE84200D82782 /* Build configuration list for PBXNativeTarget "vjezba8-mandelbrot" */ = {
 			isa = XCConfigurationList;
@@ -1318,6 +1408,7 @@
 				3F9C9990193DE84200D82782 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3FB6BB3C192EB81100A8ED03 /* Build configuration list for PBXNativeTarget "vjezba5tijela" */ = {
 			isa = XCConfigurationList;

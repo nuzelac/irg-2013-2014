@@ -49,6 +49,11 @@
 			<key>orderHint</key>
 			<integer>9</integer>
 		</dict>
+		<key>vjezba8-julia.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>12</integer>
+		</dict>
 		<key>vjezba8-mandelbrot.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -78,6 +83,11 @@
 			<true/>
 		</dict>
 		<key>3F47FF1F192F87FE0041F095</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>3F4805A2193DFBBA00D327BC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
