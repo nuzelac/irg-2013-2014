@@ -17,10 +17,12 @@ int sirina = 400, visina = 400;
 int misX = 0, misY = 0;
 int eps = 100;
 int m = 16;
-double umin = -1.5;
-double umax = 0.5;
-double vmin = -1;
-double vmax = 1;
+double umin = -1;
+double umax = 1;
+double vmin = -1.2;
+double vmax = 1.2;
+double creal = 0.32;
+double cimag = 0.043;
 
 void reshape(int, int);
 void display();
@@ -103,9 +105,7 @@ void renderScene() {
             double v0 = (vmax - vmin) * y0 / visina + vmin;
             
             int k = -1;
-            double creal = u0;
-            double cimag = v0;
-            double zreal = 0, zimag = 0;
+            double zreal = u0, zimag = v0;
             double r;
             
             do {
