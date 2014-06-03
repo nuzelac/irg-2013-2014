@@ -104,9 +104,20 @@ void mousePressedOrReleased(int, int, int, int);
 void mouseMoved(int, int);
 void keyPressed(unsigned char, int, int);
 
+
+void printMat(glm::mat4x4 myMatrix){
+    int i,j;
+    for (j=0; j<4; j++){
+        for (i=0; i<4; i++){
+            printf("%f ",myMatrix[i][j]);
+        }
+        printf("\n");
+    }
+}
+
 int main(int argc, char * argv[])
 {
-    char *objFilename = "/Users/Nino/Programming/irg/IRG/vjezba5tijela/objekti/concave/teddy.obj";
+    char *objFilename = "/Users/Nino/Programming/irg/IRG/vjezba5tijela/objekti/concave/dragon.obj";
     
     FILE *f = fopen(objFilename, "r");
     if(f == NULL) {
@@ -133,7 +144,7 @@ int main(int argc, char * argv[])
                 double x, y, z;
                 sscanf(line, "%*s %lf %lf %lf", &x, &y, &z);
                 Vertex3D v;
-                v.x = x * 10; v.y = y * 10; v.z = z * 10;
+                v.x = x * 500; v.y = y * 500; v.z = z * 500;
                 vertices.push_back(v);
             }
         }
@@ -152,6 +163,9 @@ int main(int argc, char * argv[])
                                  0, 0, 1, 0,
                                  -ociste.x, -ociste.y, -ociste.z, 1);
     
+    printf("T1\n");
+    printMat(T1);
+    
     glm::vec4 G1 = T1 * G;
     
     double sina = G1[1] / sqrt(G1[0]*G1[0] + G1[1]*G1[1]);
@@ -161,7 +175,11 @@ int main(int argc, char * argv[])
                                  sina, cosa, 0, 0,
                                  0, 0, 1, 0,
                                  0, 0, 0, 1);
+
+    printf("T2\n");
+    printMat(T2);
     
+
     glm::vec4 G2 = T2 * G1;
     
     double sinb = G2[0] / sqrt(G2[0]*G2[0] + G2[2]*G2[2]);
@@ -171,6 +189,9 @@ int main(int argc, char * argv[])
                                0, 1, 0, 0,
                                -sinb, 0, cosb, 0,
                                0, 0, 0, 1);
+    printf("T3\n");
+    printMat(T3);
+    
     
     glm::vec4 G3 = T3 * G2;
     
@@ -178,13 +199,29 @@ int main(int argc, char * argv[])
                                1, 0, 0, 0,
                                0, 0, 1, 0,
                                0, 0, 0, 1);
+    printf("T4\n");
+    printMat(T4);
+    
     
     glm::mat4 T5 = glm::mat4x4( -1, 0, 0, 0,
                                0, 1, 0, 0,
                                0, 0, 1, 0,
                                0, 0, 0, 1);
+    printf("T5\n");
+    printMat(T5);
+    
     
     T = T5 * T4 * T3 * T2 * T1;
+    
+    printf("T\n");
+    printMat(T);
+    
+//    glm::mat4 T6 = glm::mat4x4(0, -1, 0, 0,
+//                             1, 0, 0, 0,
+//                             0, 0, 1, 0,
+//                             0, 0, 0, 1);
+//    
+//    T = T6 * T;
     
     double H = G3[2];
     P = glm::mat4x4( 1, 0, 0, 0,

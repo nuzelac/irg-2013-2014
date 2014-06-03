@@ -49,6 +49,16 @@
 			<key>orderHint</key>
 			<integer>9</integer>
 		</dict>
+		<key>vjezba8-mandelbrot.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>11</integer>
+		</dict>
+		<key>vjezba8.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>10</integer>
+		</dict>
 		<key>zad124-izracun_reflektiranog_vektora.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -73,6 +83,16 @@
 			<true/>
 		</dict>
 		<key>3F55AD2418D38471006B46FF</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>3F9C997A193DE03800D82782</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>3F9C9987193DE84200D82782</key>
 		<dict>
 			<key>primary</key>
 			<true/>
