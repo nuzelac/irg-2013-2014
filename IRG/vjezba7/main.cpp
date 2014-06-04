@@ -38,7 +38,7 @@ Izvor izvor = {-2.0, 5.0, 2.0};
 
 double Ia = 100;
 double Ii = 200;
-double ka = 0.5;
+double ka = 0.7;
 double kd = 0.5;
 
 //*********************************************************************************
@@ -207,7 +207,7 @@ int main(int argc, char * argv[])
     //        return -1;
     //    }
     
-    char *objFilename = "/Users/Nino/Programming/irg/IRG/vjezba7/objekti/concave/teddy.obj";
+    char *objFilename = "/Users/Nino/Programming/irg/IRG/vjezba7/objekti/concave/all.obj";
     
     FILE *f = fopen(objFilename, "r");
     if(f == NULL) {
@@ -329,9 +329,9 @@ void zicnaForma() {
     for(int i = 0; i < (int)obj->faces.size(); ++i) {
         if(!obj->faces[i].isVisible()) continue;
         glBegin (GL_LINE_LOOP);
-        glColor3ub(255, 0, 0);	glVertex3f(obj->vertices[obj->faces[i].indexes[0]].x, obj->vertices[obj->faces[i].indexes[0]].y, obj->vertices[obj->faces[i].indexes[0]].z);
+        glColor3ub(0, 0, 255);	glVertex3f(obj->vertices[obj->faces[i].indexes[0]].x, obj->vertices[obj->faces[i].indexes[0]].y, obj->vertices[obj->faces[i].indexes[0]].z);
         glColor3ub(0, 0, 0);	glVertex3f(obj->vertices[obj->faces[i].indexes[1]].x, obj->vertices[obj->faces[i].indexes[1]].y, obj->vertices[obj->faces[i].indexes[1]].z);
-        glColor3ub(100, 0, 0);	glVertex3f(obj->vertices[obj->faces[i].indexes[2]].x, obj->vertices[obj->faces[i].indexes[2]].y, obj->vertices[obj->faces[i].indexes[2]].z);
+        glColor3ub(0, 0, 100);	glVertex3f(obj->vertices[obj->faces[i].indexes[2]].x, obj->vertices[obj->faces[i].indexes[2]].y, obj->vertices[obj->faces[i].indexes[2]].z);
         glEnd();
     }
 }
@@ -345,9 +345,9 @@ void konstantnoSjencanje() {
         if(I < 0) I = 0;
         
         glBegin (GL_TRIANGLES);
-        glColor3ub(I, 0, 0);	glVertex3f(obj->vertices[obj->faces[i].indexes[0]].x, obj->vertices[obj->faces[i].indexes[0]].y, obj->vertices[obj->faces[i].indexes[0]].z);
-        glColor3ub(I, 0, 0);	glVertex3f(obj->vertices[obj->faces[i].indexes[1]].x, obj->vertices[obj->faces[i].indexes[1]].y, obj->vertices[obj->faces[i].indexes[1]].z);
-        glColor3ub(I, 0, 0);	glVertex3f(obj->vertices[obj->faces[i].indexes[2]].x, obj->vertices[obj->faces[i].indexes[2]].y, obj->vertices[obj->faces[i].indexes[2]].z);
+        glColor3ub(0, 0, I);	glVertex3f(obj->vertices[obj->faces[i].indexes[0]].x, obj->vertices[obj->faces[i].indexes[0]].y, obj->vertices[obj->faces[i].indexes[0]].z);
+        glColor3ub(0, 0, I);	glVertex3f(obj->vertices[obj->faces[i].indexes[1]].x, obj->vertices[obj->faces[i].indexes[1]].y, obj->vertices[obj->faces[i].indexes[1]].z);
+        glColor3ub(0, 0, I);	glVertex3f(obj->vertices[obj->faces[i].indexes[2]].x, obj->vertices[obj->faces[i].indexes[2]].y, obj->vertices[obj->faces[i].indexes[2]].z);
         glEnd();
     }
 }
@@ -370,9 +370,9 @@ void GouraudovoSjencanje() {
 
 
         glBegin (GL_TRIANGLES);
-        glColor3ub(I0, 0, 0);	glVertex3f(obj->vertices[obj->faces[i].indexes[0]].x, obj->vertices[obj->faces[i].indexes[0]].y, obj->vertices[obj->faces[i].indexes[0]].z);
-        glColor3ub(I1, 0, 0);	glVertex3f(obj->vertices[obj->faces[i].indexes[1]].x, obj->vertices[obj->faces[i].indexes[1]].y, obj->vertices[obj->faces[i].indexes[1]].z);
-        glColor3ub(I2, 0, 0);	glVertex3f(obj->vertices[obj->faces[i].indexes[2]].x, obj->vertices[obj->faces[i].indexes[2]].y, obj->vertices[obj->faces[i].indexes[2]].z);
+        glColor3ub(0, 0, I0);	glVertex3f(obj->vertices[obj->faces[i].indexes[0]].x, obj->vertices[obj->faces[i].indexes[0]].y, obj->vertices[obj->faces[i].indexes[0]].z);
+        glColor3ub(0, 0, I1);	glVertex3f(obj->vertices[obj->faces[i].indexes[1]].x, obj->vertices[obj->faces[i].indexes[1]].y, obj->vertices[obj->faces[i].indexes[1]].z);
+        glColor3ub(0, 0, I2);	glVertex3f(obj->vertices[obj->faces[i].indexes[2]].x, obj->vertices[obj->faces[i].indexes[2]].y, obj->vertices[obj->faces[i].indexes[2]].z);
         glEnd();
     }
 }

@@ -118,9 +118,12 @@ void renderScene() {
                 r = sqrt(zreal * zreal + zimag * zimag);
             } while(r < eps && k < m);
             
-            double boja = (double)k / m;
-            if(boja >= 1) boja = 0.0;
-            glColor3d(boja, boja, boja);
+            if(k >= m) {
+                glColor3d(0, 0, 0);
+            } else {
+                double boja = (double) k / m;
+                glColor3d(boja, 1.0 - boja / 2.0, 0.8 - boja / 3.0);
+            }
             glVertex2i(x0, visina - y0);
         }
     }
